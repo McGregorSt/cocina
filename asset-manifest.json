@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/kuchen/static/css/main.e6161af3.css",
+    "main.js": "/kuchen/static/js/main.92c87f83.js",
+    "static/media/dropdown.png": "/kuchen/static/media/dropdown.d435c9afd0042ef26838.png",
+    "static/media/lion.svg": "/kuchen/static/media/lion.02a499d95b45ea7c93d83e59111d0967.svg",
+    "static/media/chuck.svg": "/kuchen/static/media/chuck.390a7e47a080083ce65aadf8eb1be717.svg",
+    "static/media/business-management.svg": "/kuchen/static/media/business-management.bb85fa9f24993c1623d31a45b158be6d.svg",
+    "static/media/orders.svg": "/kuchen/static/media/orders.2fe5fc1abf47002aa50fd8bd3c0a81ce.svg",
+    "static/media/checklist.svg": "/kuchen/static/media/checklist.6d71ca308898a6405ad1af459f9a96af.svg",
+    "index.html": "/kuchen/index.html",
+    "static/media/dining.svg": "/kuchen/static/media/dining.0eee9dc5a8332f73fff158c0fc63580e.svg",
+    "static/media/lock.svg": "/kuchen/static/media/lock.733ab3245b84fd4f035e9b4cc3113fff.svg",
+    "static/media/schedule.svg": "/kuchen/static/media/schedule.2e728acd7ea129290e1211b963d1563e.svg",
+    "static/media/check_box.svg": "/kuchen/static/media/check_box.6905c45c8d5ba07c12a13055a2078a02.svg",
+    "static/media/check-round.svg": "/kuchen/static/media/check-round.63aa8fec529b3b9a22ae6754b47ed0b6.svg",
+    "static/media/more_horiz.svg": "/kuchen/static/media/more_horiz.dbab359c45ce4e3d09535d8efcdd62ee.svg",
+    "static/media/add.svg": "/kuchen/static/media/add.d5a121671782dcbfae0076b62b82ecbc.svg",
+    "static/media/check_box_blank.svg": "/kuchen/static/media/check_box_blank.bb8b4cd01b165e2b396e9f818eb1b6bc.svg",
+    "static/media/close.svg": "/kuchen/static/media/close.53c9f4b6ba9fca553d1eb9cda88a11af.svg",
+    "static/media/remove.svg": "/kuchen/static/media/remove.ff4989146d05e60468b5cff69cb7fd09.svg",
+    "static/media/menu-white.svg": "/kuchen/static/media/menu-white.71abf06623d275caa262f8581f3dd220.svg",
+    "main.e6161af3.css.map": "/kuchen/static/css/main.e6161af3.css.map",
+    "main.92c87f83.js.map": "/kuchen/static/js/main.92c87f83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6161af3.css",
+    "static/js/main.92c87f83.js"
+  ]
+}
