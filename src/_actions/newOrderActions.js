@@ -7,7 +7,7 @@ export const chooseGroup = (id, name) => {
 }
 
 export const checkMealAvailability = () => (dispatch, getState) => {
-  const productsToManage = getState().productReducer.productsToManage
+  const productsToManage = getState().productState.productsToManage
   dispatch({
     type: 'CHECK_MEAL_AVAILABILITY',
     productsToManage: productsToManage,
@@ -24,7 +24,7 @@ export const chooseProduct = (index, itemName) => {
 
 export const deleteOrderSummaryItem =
   (index, price) => (dispatch, getState) => {
-    const productsToManage = getState().productReducer.productsToManage
+    const productsToManage = getState().productState.productsToManage
     dispatch({
       type: 'DELETE_ORDER_SUMMARY_ITEM',
       productsToManage: productsToManage,
@@ -46,7 +46,7 @@ export const showOrderSummary = () => {
 }
 
 export const postNewOrder = (orderDetails) => (dispatch, getState) => {
-  const productsToManage = getState().productReducer.productsToManage
+  const productsToManage = getState().productState.productsToManage
   dispatch({
     type: 'POST_NEW_ORDER',
     productsToManage: productsToManage,
@@ -55,7 +55,7 @@ export const postNewOrder = (orderDetails) => (dispatch, getState) => {
 }
 
 export const reserveProducts = () => (dispatch, getState) => {
-  const productsToManage = getState().productReducer.productsToManage
+  const productsToManage = getState().productState.productsToManage
   dispatch({
     type: 'RESERVE_PRODUCTS',
     productsToManage: productsToManage,
@@ -64,7 +64,7 @@ export const reserveProducts = () => (dispatch, getState) => {
 
 export const checkIngrAvailability =
   (mealId, ingredients) => (dispatch, getState) => {
-    const productsToManage = getState().productReducer.productsToManage
+    const productsToManage = getState().productState.productsToManage
     dispatch({
       type: 'CHECK_INGR_AVAILABILITY',
       productsToManage: productsToManage,
@@ -74,7 +74,7 @@ export const checkIngrAvailability =
   }
 
 export const newOrder = (orderDetails) => (dispatch, getState) => {
-  const productsToManage = getState().productReducer.productsToManage
+  const productsToManage = getState().productState.productsToManage
   dispatch({
     type: 'POST_NEW_ORDER',
     productsToManage: productsToManage,

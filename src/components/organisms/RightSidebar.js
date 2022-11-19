@@ -64,10 +64,10 @@ const StyledAddAndTimeWrapper = styled.div`
 
 const RightSidebar = () => {
   const showRightSidebar = useSelector(
-    (state) => state.mainReducer.showRightSidebar
+    (state) => state.appState.showRightSidebar
   )
   const { id, name, inState, defaultTime, toPrepare } = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar
+    (state) => state.productState.productToDisplayOnRightSidebar
   )
   const dispatch = useDispatch()
   const handleCloseRightSidebar = () => {

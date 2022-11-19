@@ -13,10 +13,10 @@ const StyledTable = styled.div`
 
 const ProductActualTable = () => {
   const stockEntries = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar.stockEntries
+    (state) => state.productState.productToDisplayOnRightSidebar.stockEntries
   )
   const productId = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar.id
+    (state) => state.productState.productToDisplayOnRightSidebar.id
   )
 
   return stockEntries.length === 0 ? (

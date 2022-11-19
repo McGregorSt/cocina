@@ -28,9 +28,9 @@ const StyledUserPage = styled.div`
 `
 
 const UserPage = ({ children }) => {
-  const showSidebar = useSelector((state) => state.mainReducer.showSidebar)
+  const showSidebar = useSelector((state) => state.appState.showSidebar)
   const showRightSidebar = useSelector(
-    (state) => state.mainReducer.showRightSidebar
+    (state) => state.appState.showRightSidebar
   )
 
   return (

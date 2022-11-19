@@ -3,7 +3,7 @@ import { app } from '../data/mainJson'
 
 const initialState = app
 
-const mainReducer = (state = initialState, action) => {
+const appState = (state = initialState, action) => {
   switch (action.type) {
     case 'SHOW_LEFTSIDEBAR': {
       return produce(state, (draft) => {
@@ -41,4 +41,4 @@ const mainReducer = (state = initialState, action) => {
   }
 }
 
-export default mainReducer
+export default appState

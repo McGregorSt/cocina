@@ -56,8 +56,8 @@ const StyledVersion = styled.div`
 `
 
 const LeftSidebar = () => {
-  const showSidebar = useSelector((state) => state.mainReducer.showSidebar)
-  const profiles = useSelector((state) => state.mainReducer.profilesOn)
+  const showSidebar = useSelector((state) => state.appState.showSidebar)
+  const profiles = useSelector((state) => state.appState.profilesOn)
   const dispatch = useDispatch()
 
   const handleToggle = (e) => {

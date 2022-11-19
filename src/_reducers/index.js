@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux'
-// import ordersReducer from './ordersReducer'
-import loginReducer from './loginReducer'
-import mainReducer from './mainReducer'
-import productReducer from './productReducer'
+import ordersState from './ordersState'
+import loginState from './loginState'
+import appState from './appState'
+import productState from './productState'
 import newOrderState from './newOrderState'
 
 export const rootReducer = combineReducers({
-  // ordersReducer,
-  loginReducer,
-  mainReducer,
-  productReducer,
+  ordersState,
+  loginState: loginState,
+  appState: appState,
+  productState: productState,
   newOrderState
 })

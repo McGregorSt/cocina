@@ -3,7 +3,7 @@ import { productsToManage } from "../data/productsToManageJson";
 
 const initialState = productsToManage;
 
-const productReducer = (state = initialState, action) => {
+const productState = (state = initialState, action) => {
   switch (action.type) {
     // case 'PRODUCTS_TO_MANAGE': {
     //   return produce(state, (draft) => {
@@ -402,4 +402,4 @@ const productReducer = (state = initialState, action) => {
   }
 };
 
-export default productReducer;
+export default productState;

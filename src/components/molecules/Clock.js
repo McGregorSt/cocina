@@ -47,10 +47,10 @@ const StyledClockInputs = styled.div`
 
 const Clock = ({ toPrepare }) => {
   const productToDisplay = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar
+    (state) => state.productState.productToDisplayOnRightSidebar
   )
   const time = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar.defaultTime
+    (state) => state.productState.productToDisplayOnRightSidebar.defaultTime
   )
   const [mins, setMins] = useState('')
   const [secs, setSecs] = useState('')

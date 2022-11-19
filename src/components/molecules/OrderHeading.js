@@ -24,7 +24,7 @@ const StyledUsers = styled.div`
 
 const OrderHeading = ({ orderNo, status, profiles }) => {
   const dispatch = useDispatch()
-  const profilesOn = useSelector((state) => state.mainReducer.profilesOn)
+  const profilesOn = useSelector((state) => state.appState.profilesOn)
 
   return (
     <StyledOrderHeading status={status}>

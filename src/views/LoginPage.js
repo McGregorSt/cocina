@@ -121,14 +121,14 @@ const LoginPage = () => {
 
   const dispatch = useDispatch()
 
-  const isAuth = useSelector((state) => state.loginReducer[0].token)
+  const isAuth = useSelector((state) => state.loginState[0].token)
   const loginStatus = useSelector(
-    (state) => state.loginReducer[0].responseStatus
+    (state) => state.loginState[0].responseStatus
   )
   const isRegistrySuccessful = useSelector(
-    (state) => state.loginReducer[1].success
+    (state) => state.loginState[1].success
   )
-  const registryErrors = useSelector((state) => state.loginReducer[1].message)
+  const registryErrors = useSelector((state) => state.loginState[1].message)
 
   const handleFormSubmit = (e) => {
     e.preventDefault()

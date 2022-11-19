@@ -3,7 +3,7 @@ import { loginData } from '../data/loginJson'
 
 const initialState = loginData
 
-const loginReducer = (state = initialState, action) => {
+const loginState = (state = initialState, action) => {
   switch(action.type) {
     case 'AUTH_SUCCESS': {
       return produce(state, draft => {
@@ -38,4 +38,4 @@ const loginReducer = (state = initialState, action) => {
   }
 }
 
-export default loginReducer
+export default loginState

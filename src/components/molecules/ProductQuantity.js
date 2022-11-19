@@ -23,7 +23,7 @@ const ProductQuantity = () => {
   const [currentValue, setCurrentValue] = useState(0)
   const dispatch = useDispatch()
   const productId = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar.id
+    (state) => state.productState.productToDisplayOnRightSidebar.id
   )
   const handleAddProductState = (id, value) => {
     dispatch(addProductToState(id, value))

@@ -3,7 +3,7 @@ import {newOrder} from '../data/newOrderJson'
 
 const initialState = newOrder
 
-const ordersReducer = (state = initialState, action) => {
+const ordersState = (state = initialState, action) => {
   switch(action.type) {
     case 'ITEM_READY': {
       return produce(state, draft => {
@@ -105,4 +105,4 @@ const ordersReducer = (state = initialState, action) => {
   }
 }
 
-export default ordersReducer
+export default ordersState

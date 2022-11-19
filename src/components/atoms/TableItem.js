@@ -32,7 +32,7 @@ const TableItem = ({ index, time, qty, timeDiff, id, productId }) => {
   const dispatch = useDispatch()
 
   const inState = useSelector(
-    (state) => state.productReducer.productToDisplayOnRightSidebar.inState
+    (state) => state.productState.productToDisplayOnRightSidebar.inState
   )
 
   const handlePrepareEntry = (id, productId) => {

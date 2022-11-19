@@ -4,7 +4,7 @@ import UserPage from '../template/UserPage'
 import { useSelector } from 'react-redux'
 
 const ProductSupply = () => {
-  const productsToManage = useSelector((state) => state.productReducer.productsToManage)
+  const productsToManage = useSelector((state) => state.productState.productsToManage)
 
   return (
     <UserPage>
