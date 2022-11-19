@@ -12,14 +12,19 @@ import { Routes } from 'react-router'
 
 function App() {
   return (
-      <Provider store={store}>
-        <Routes>
-          <Route path='new-order' element={<NewOrder/>} />
-          <Route path='orders' element={<Orders/>} />
-          <Route path='/product-state' element={<ProductsMgmt/>} />
-          <Route exact path='/' element={<Orders/>} />
-        </Routes>
-      </Provider>
+    <Provider store={store}>
+      <Switch>
+        <Route path='/new-order'>
+          <NewOrder />
+        </Route>
+        <Route path='/orders'>
+          <Orders />
+        </Route>
+        <Route path='/product-state'>
+          <ProductsMgmt />
+        </Route>
+      </Switch>
+    </Provider>
   )
 }
 
