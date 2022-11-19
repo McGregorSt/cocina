@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import EditButton from "../atoms/EditButton";
-import btnBin from "../../assets/remove.svg";
-import btnReady from "../../assets/check-round.svg";
-import btnLock from "../../assets/lock.svg";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
+import styled from 'styled-components'
+import EditButton from '../atoms/EditButton'
+import btnBin from '../../assets/remove.svg'
+import btnReady from '../../assets/check-round.svg'
+import btnLock from '../../assets/lock.svg'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   preparationReady,
   stockEntryRemove,
-} from "../../_actions/productActions";
+} from '../../_actions/productActions'
 
 const StyledTableItem = styled.div`
   display: grid;
@@ -22,42 +22,38 @@ const StyledTableItem = styled.div`
     margin: 0 10px;
     padding: 15px 25px;
   }
-`;
+`
 
 const StyledTime = styled.div`
   width: 100px;
-`;
+`
 
 const TableItem = ({ index, time, qty, timeDiff, id, productId }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const inState = useSelector(
     (state) => state.productReducer.productToDisplayOnRightSidebar.inState
-  );
+  )
 
   const handlePrepareEntry = (id, productId) => {
-    dispatch(preparationReady(id, productId));
-    // dispatch(changeStatus())
-  };
+    dispatch(preparationReady(id, productId))
+  }
   const handleRemoveEntry = (id, productId) => {
-    dispatch(stockEntryRemove(id, productId));
-    // dispatch(changeStatus(id, productId))
-  };
+    dispatch(stockEntryRemove(id, productId))
+  }
 
   return (
     <StyledTableItem>
       <div>{index}</div>
-      {/* <StyledTime>{time === `undefined:undefined:undefined` ? '00:00:00' : `${time}`}</StyledTime> */}
       <StyledTime>{time === `00:00:00` ? `` : `${time}`}</StyledTime>
       <div>{qty}</div>
-      {/* <div>{timeDiff}</div> */}
       {inState.locked >= index ? (
         <EditButton
           icon={btnLock}
-          width="50px"
-          height="50px"
-          radius="5px"
-          onClick={() => console.log("lock")}
+          width='50px'
+          height='50px'
+          radius='5px'
+          onClick={() => console.log('lock')}
           noPointer
         />
       ) : (
@@ -67,9 +63,9 @@ const TableItem = ({ index, time, qty, timeDiff, id, productId }) => {
       {timeDiff <= 0 ? (
         <EditButton
           icon={btnReady}
-          width="50px"
-          height="50px"
-          radius="5px"
+          width='50px'
+          height='50px'
+          radius='5px'
           onClick={() => handlePrepareEntry(id, productId)}
         />
       ) : (
@@ -77,13 +73,13 @@ const TableItem = ({ index, time, qty, timeDiff, id, productId }) => {
       )}
       <EditButton
         icon={btnBin}
-        width="50px"
-        height="50px"
-        radius="5px"
+        width='50px'
+        height='50px'
+        radius='5px'
         onClick={() => handleRemoveEntry(id, productId)}
       />
     </StyledTableItem>
-  );
-};
+  )
+}
 
-export default TableItem;
+export default TableItem

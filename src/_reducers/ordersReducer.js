@@ -1,5 +1,4 @@
 import produce, { original } from 'immer'
-import {orders} from '../data/ordersJson'
 import {newOrder} from '../data/newOrderJson'
 
 const initialState = newOrder
@@ -11,7 +10,6 @@ const ordersReducer = (state = initialState, action) => {
         const data = original(draft.orders)
         console.log('ITEM_READY', state)
         const orderIndex = state.orders.findIndex(order => console.log(order))
-        // const orderIndex = data.findIndex(order => order.number === action.orderNo)
         const itemIndex = data[orderIndex].orderItems.findIndex(item => item.index === action.orderItemId)
         draft[orderIndex].orderItems[itemIndex].complete = !draft[orderIndex].orderItems[itemIndex].complete
       })

@@ -4,7 +4,7 @@ import ProductName from './ProductName'
 import more from '../../assets/more_horiz.svg'
 import check from '../../assets/check-round.svg'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {
   addProductToState,
   changeStatus,
@@ -16,8 +16,6 @@ import {
 const StyledProductFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  /* height: 120px; */
-  
 `
 
 const StyledIcons = styled.div`
@@ -27,7 +25,7 @@ const StyledIcons = styled.div`
     background-size: 50%;
     border-bottom: 1px solid ${({ theme }) => theme.grey300};
   }
-  
+
   & :first-child {
     padding: 0;
     border-radius: 0 10px 0 0;
@@ -50,7 +48,7 @@ const ProductFooter = ({ name, id, currentQuantity, setCurrentQty }) => {
 
   return (
     <StyledProductFooter>
-      <ProductName >{name}</ProductName>
+      <ProductName>{name}</ProductName>
       <StyledIcons>
         <EditButton
           icon={check}
@@ -64,7 +62,6 @@ const ProductFooter = ({ name, id, currentQuantity, setCurrentQty }) => {
           hover
           onClick={(id) => handleRightSidebar(id)}
         />
-        {/* <EditButton icon={more} medium onClick={() => dispatch(showRightSidebar(id))}/> */}
       </StyledIcons>
     </StyledProductFooter>
   )

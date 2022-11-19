@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-const ItemName = ({name, size, unit}) => {
+const ItemName = ({ name, size, unit }) => {
   return (
     <div>
-      {name} {size}{unit}
+      {name} {size}
+      {unit}
     </div>
-  );
+  )
 }
 
-export default ItemName;
+export default ItemName

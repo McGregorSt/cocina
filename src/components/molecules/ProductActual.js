@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
-import ProductActualTable from './ProductActualTable';
-import ProductState from './ProductState';
+import ProductActualTable from './ProductActualTable'
+import ProductState from './ProductState'
 
 const StyledProductActual = styled.div`
   width: 95%;
@@ -11,9 +11,6 @@ const StyledProductActual = styled.div`
 `
 
 const StyledProductState = styled(ProductState)`
-  /* width: 80%;
-  display: grid;
-  grid-template-columns: 1fr 2fr 3fr; */
   background-color: black;
 `
 
@@ -23,7 +20,7 @@ const ProductActual = ({ inState, toPrepare }) => {
       <StyledProductState inState={inState} toPrepare={toPrepare} />
       <ProductActualTable />
     </StyledProductActual>
-  );
+  )
 }
 
-export default ProductActual;
+export default ProductActual

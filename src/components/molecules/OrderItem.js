@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import Checkbox from '../atoms/Checkbox'
 import dropdown from '../../assets/dropdown.png'
 import OrderDescription from './OrderDescription'
-import { connect, useSelector, useDispatch } from 'react-redux'
-import { orders } from '../../data/ordersJson'
-import { allItemsReady, itemComplete, orderStatus } from '../../_actions/actions'
+import { useDispatch } from 'react-redux'
+import {
+  allItemsReady,
+  itemComplete,
+  orderStatus,
+} from '../../_actions/actions'
 
 const StyledItem = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.grey300};
@@ -28,7 +31,6 @@ const StyledGrid = styled.div`
   grid-template-columns: 0.5fr 0.3fr 2fr 0.3fr;
   cursor: pointer;
   padding: 10px;
-
 `
 
 const StyledDetails = styled.div`
@@ -59,9 +61,17 @@ const StyledDropdown = styled.div`
   transform: rotate(180deg);
 `
 
-
-const OrderItem = ({ quantity, item, details, prepDetails, index, complete, orderNo, size, unit }) => {
-
+const OrderItem = ({
+  quantity,
+  item,
+  details,
+  prepDetails,
+  index,
+  complete,
+  orderNo,
+  size,
+  unit,
+}) => {
   const dispatch = useDispatch()
 
   const handleItemComplete = (orderNo, index) => {
@@ -70,21 +80,15 @@ const OrderItem = ({ quantity, item, details, prepDetails, index, complete, orde
     dispatch(allItemsReady(orderNo))
     dispatch(orderStatus(orderNo))
   }
-  
+
   return (
-    <StyledItem 
-      onClick={() => handleItemComplete(orderNo, index)}
-      // complete={complete}
-      >
-      <StyledGrid >
-        <Checkbox 
-          selected={complete} 
-        />
+    <StyledItem onClick={() => handleItemComplete(orderNo, index)}>
+      <StyledGrid>
+        <Checkbox selected={complete} />
         <span>{quantity}x</span>
         <span>{`${item} ${size}${unit}`}</span>
       </StyledGrid>
-      <StyledDetails 
-      >
+      <StyledDetails>
         {details ? <StyledDropdown /> : ''}
         {details ? <OrderDescription details={details} /> : ''}
         {prepDetails ? <p className='prepDetails'>{prepDetails}</p> : ''}
@@ -93,4 +97,4 @@ const OrderItem = ({ quantity, item, details, prepDetails, index, complete, orde
   )
 }
 
-export default (OrderItem)
+export default OrderItem

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import EditButton from '../atoms/EditButton'
 import styled from 'styled-components'
 import minus from '../../assets/remove.svg'
@@ -16,7 +16,7 @@ const StyledProductEdits = styled.div`
     background-color: ${({ theme }) => theme.grey300};
     border: 1px solid ${({ theme }) => theme.grey350};
   }
-  `
+`
 
 const Button = styled(EditButton)`
   width: ${({ size }) => size};
@@ -25,7 +25,7 @@ const Button = styled(EditButton)`
   background-size: 50%;
   font-size: 36px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-  `
+`
 
 const CurrentValue = styled.div`
   width: 72px;
@@ -38,13 +38,8 @@ const CurrentValue = styled.div`
 `
 
 const ProductEdits = ({ currentQuantity, setCurrentQty }) => {
-  const [valueToAdd, setValueToAdd] = useState(0)
-
   const handleProductQuantityToAdd = (value, operation) => {
-    // operation === 'add' ? setValueToAdd(value + 1) : setValueToAdd(value - 1)
-    operation === 'add'
-      ? setCurrentQty(value + 1)
-      : setCurrentQty(value - 1)
+    operation === 'add' ? setCurrentQty(value + 1) : setCurrentQty(value - 1)
   }
 
   return (
@@ -65,7 +60,6 @@ const ProductEdits = ({ currentQuantity, setCurrentQty }) => {
         hover
         onClick={() => handleProductQuantityToAdd(currentQuantity, 'add')}
       />
-      {/* <Button icon={plus} large onClick={() => } /> */}
     </StyledProductEdits>
   )
 }

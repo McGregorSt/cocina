@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Navbar from '../components/organisms/Navbar'
 import styled, { css } from 'styled-components'
 import LeftSidebar from '../components/organisms/LeftSidebar'
 import MainTemplate from './MainTemplate'
 import RightSidebar from '../components/organisms/RightSidebar'
-import { closeRightSidebar, productsReadyToManage } from '../_actions/productActions'
 
 const StyledUserPage = styled.div`
   margin-top: 6vh;
@@ -16,8 +15,6 @@ const StyledUserPage = styled.div`
   align-content: flex-start;
   position: relative;
   overflow-y: hidden;
-  /* padding: 20px; */
-  /* margin: 20px; */
   ${({ activeLeft }) =>
     activeLeft &&
     css`
@@ -35,23 +32,14 @@ const UserPage = ({ children }) => {
   const showRightSidebar = useSelector(
     (state) => state.mainReducer.showRightSidebar
   )
-  const dispatch = useDispatch()
-  // const handleCloseRightSidebar = () => {
-  //   dispatch(closeRightSidebar())
-  // }
-
-  // useEffect(() => {
-  //   dispatch(productsReadyToManage())
-  //   console.log('productsToManage')
-  // })
 
   return (
-    <MainTemplate >
+    <MainTemplate>
       <StyledUserPage activeLeft={showSidebar} activeRight={showRightSidebar}>
         <Navbar />
         <LeftSidebar />
-        { showRightSidebar ? <RightSidebar /> : ''}
-        { children }
+        {showRightSidebar ? <RightSidebar /> : ''}
+        {children}
       </StyledUserPage>
     </MainTemplate>
   )

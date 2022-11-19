@@ -2,8 +2,9 @@ import styled, { css } from 'styled-components'
 
 const Button = styled.button`
   width: 50%;
-  background-color: ${({ status, theme }) => status ? theme.readyToGo : theme.grey400};
-  color: ${({ status, theme }) => status ? theme.white : theme.grey300};
+  background-color: ${({ status, theme }) =>
+    status ? theme.readyToGo : theme.grey400};
+  color: ${({ status, theme }) => (status ? theme.white : theme.grey300)};
   padding: 10px;
   border-radius: 20px;
   border: none;
@@ -17,16 +18,16 @@ const Button = styled.button`
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
-  ${({ addButton }) => 
-    addButton && css`
+  ${({ addButton }) =>
+    addButton &&
+    css`
       background-color: ${({ theme }) => theme.cultured};
-    `
-  } 
-  ${({ editButton }) => 
-    editButton && css`
+    `}
+  ${({ editButton }) =>
+    editButton &&
+    css`
       background-color: ${({ theme }) => theme.ready};
-    `
-  } 
+    `}
 `
 
 export default Button

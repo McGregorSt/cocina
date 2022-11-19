@@ -274,12 +274,12 @@ const productReducer = (state = initialState, action) => {
         const entryIndex = entries.findIndex(
           (entry) => entry.id === action.payload.id
         );
-        const parsedTimer = Date.parse(timer);
-        const preparationTimeInMs = entries[entryIndex].preparationTime * 1000;
-        const timeStamp = Date.parse(entries[entryIndex].timeStamp);
-        const correctedTime = new Date(
-          parsedTimer - timeStamp + preparationTimeInMs
-        );
+        // const parsedTimer = Date.parse(timer);
+        // const preparationTimeInMs = entries[entryIndex].preparationTime * 1000;
+        // const timeStamp = Date.parse(entries[entryIndex].timeStamp);
+        // const correctedTime = new Date(
+        //   parsedTimer - timeStamp + preparationTimeInMs
+        // );
 
         draft.productsToManage[productIndex].stockEntries[
           entryIndex

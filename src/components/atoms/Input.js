@@ -6,8 +6,6 @@ const Input = styled.input`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 5px;
-  
-
 `
 
 export default Input

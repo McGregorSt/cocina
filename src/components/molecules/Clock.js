@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Input from '../atoms/Input'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,7 +20,7 @@ const StyledHeader = styled(Heading)`
 
 const StyledDefaultTime = styled.div`
   font-size: ${({ theme }) => theme.fontSize.l};
-  /* font-family: 'Roboto'; */
+  font-family: 'Roboto';
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   padding: 20px 50px;
 `
@@ -84,7 +84,7 @@ const Clock = ({ toPrepare }) => {
   }
 
   return (
-    <StyledClock >
+    <StyledClock>
       <StyledHeader>
         <Heading>czas przygotowania</Heading>
         <EditButton
@@ -96,7 +96,7 @@ const Clock = ({ toPrepare }) => {
           style={{ borderRadius: '10px' }}
           onClick={() => handleTimeConfirm()}
           disabled={!toPrepare}
-          />
+        />
       </StyledHeader>
       <StyledClockInputs>
         <Input
@@ -106,7 +106,7 @@ const Clock = ({ toPrepare }) => {
           onChange={(e, type) => handleInputChange(e, (type = 'mins'))}
           value={mins}
           disabled={!toPrepare}
-          />
+        />
         <span>:</span>
         <Input
           size='60px'

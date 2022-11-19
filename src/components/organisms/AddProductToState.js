@@ -1,7 +1,6 @@
-import React from 'react';
-import ProductQuantity from '../molecules/ProductQuantity';
+import React from 'react'
+import ProductQuantity from '../molecules/ProductQuantity'
 import styled from 'styled-components'
-
 
 const StyledAddProductToState = styled.div`
   margin: 30px 0;
@@ -13,9 +12,9 @@ const StyledAddProductToState = styled.div`
 const AddProductToState = () => {
   return (
     <StyledAddProductToState>
-        <ProductQuantity />
+      <ProductQuantity />
     </StyledAddProductToState>
-  );
+  )
 }
 
-export default AddProductToState;
+export default AddProductToState

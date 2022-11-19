@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react'
 import styled, { css } from 'styled-components'
 import unchecked from '../../assets/check_box_blank.svg'
 import checked from '../../assets/check_box.svg'
-
 
 const StyledCheckbox = styled.div`
   width: 20px;
@@ -11,22 +10,20 @@ const StyledCheckbox = styled.div`
   background-size: 95%;
   background-repeat: no-repeat;
   cursor: pointer;
-  
-  ${({ clicked }) => 
-    clicked && css`
-      background-image: url(${checked});
-    `
-  }
 
+  ${({ clicked }) =>
+    clicked &&
+    css`
+      background-image: url(${checked});
+    `}
 `
 
 const Checkbox = ({ selected }) => {
-
   return (
     <div>
-      <StyledCheckbox  clicked={selected}/>
+      <StyledCheckbox clicked={selected} />
     </div>
   )
 }
 
-export default Checkbox;
+export default Checkbox

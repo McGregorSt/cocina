@@ -4,7 +4,6 @@ import EditButton from '../atoms/EditButton'
 
 const StyledPieContainer = styled.div`
   transform: rotate(-12deg);
-  /* position: relative; */
   & .palette {
     height: 200px;
     width: 200px;
@@ -17,7 +16,6 @@ const StyledPieContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    /* border:50px solid var(--c,red); */
     border-radius: 50%;
     clip-path: polygon(50% 50%, 60% 0%, 100% 0%, 100% 33.745%);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -25,7 +23,6 @@ const StyledPieContainer = styled.div`
   }
   & .color1 {
     transform: rotate(-0deg) translate(10px, -10px);
-    /* background: blue; */
     background: ${({ theme }) => theme.ready};
     cursor: pointer;
     & > * {
@@ -75,7 +72,6 @@ const StyledPieContainer = styled.div`
       background-color: transparent;
       border: none;
       z-index: 5;
-      /* transform: rotate(-48deg) translate(60px, 120px); */
       transform: rotate(-108deg) translate(-75px, 120px);
     }
     &:hover {
@@ -158,17 +154,7 @@ const StyledPieContainer = styled.div`
     bottom: 0%;
   }
 `
-const StyledPiece = styled.div`
-  transform: rotate(120deg) translate(10px, -10px);
-  background: ${({ theme }) => theme.ready};
-  &button {
-    font-size: 18px;
-    position: absolute;
-    background-color: yellowgreen;
-    z-index: 5;
-    transform: rotate(70deg) translate(-50px, 90px);
-  }
-`
+
 const StyledEditButton = styled(EditButton)`
   background-color: ${({ add, theme }) => (add ? theme.ready : theme.notReady)};
   font-size: 24px;
@@ -201,7 +187,6 @@ const PieChart = ({ currentValue, setCurrentValue }) => {
         <div
           className='color4'
           onClick={() => setCurrentValue(currentValue - 1)}
-          
         >
           <button disabled={currentValue < 1}>-1</button>
         </div>
@@ -217,11 +202,6 @@ const PieChart = ({ currentValue, setCurrentValue }) => {
         >
           <button disabled={currentValue < 5}>-5</button>
         </div>
-        {/* 
-        <div className='color3'></div>
-        <div className='color4'></div>
-        <div className='color5'></div>
-        <div className='color6'></div> */}
       </div>
       <div className='innerCircle'>
         <StyledEditButton

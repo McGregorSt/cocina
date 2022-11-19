@@ -7,8 +7,6 @@ const Icon = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 70%;
+`
 
-
-` 
-
-export default Icon;
+export default Icon

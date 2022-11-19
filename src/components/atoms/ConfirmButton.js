@@ -9,4 +9,4 @@ const ConfirmButton = styled.div`
   background-position: 50% 50%;
 `
 
-export default ConfirmButton;
+export default ConfirmButton

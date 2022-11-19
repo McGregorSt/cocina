@@ -53,25 +53,12 @@ const StyledQuantityWrapper = styled.div`
   justify-content: space-around;
 `
 
-// const StyledInputRange = styled.div`
-//   input[type='range']::-webkit-slider-thumb {
-//     height: 12px;
-//     width: 45px;
-//     cursor: pointer;
-//     -webkit-appearance: none;
-//     border-bottom: 1px solid #29334f;
-//     box-shadow: 0 0 0 red, -40px 0 0 red, -85px 0 0 red, -130px 0 0 red,
-//       -175px 0 0 red, -220px 0 0 red, -265px 0 0 red, -310px 0 0 red,
-//       -350px 0 0 red, -390px 0 0 red, -409px 0 0 red;
-//     background: black;
-//   }
-// `
 const StyledContainer = styled.div`
   position: relative;
   max-width: 450px;
   overflow: hidden;
   --thumb-color: #ef3e36;
-  --thumb-behind-color: #FDB89F;
+  --thumb-behind-color: #fdb89f;
   --thumb-minus-behind-color: green;
 `
 
@@ -86,7 +73,6 @@ const StyledInputRange = styled.input`
   ::-webkit-slider-runnable-track {
     width: 100%;
     cursor: pointer;
-    /* border: 1px solid var(--tracker-color); */
     overflow: hidden;
   }
 
@@ -99,9 +85,12 @@ const StyledInputRange = styled.input`
     box-shadow: 0 0 0 var(--thumb-behind-color),
       -40px 0 0 var(--thumb-behind-color), -85px 0 0 var(--thumb-behind-color),
       -130px 0 0 var(--thumb-behind-color), -175px 0 0 var(--thumb-behind-color),
-      -220px 0 0 var(--thumb-minus-behind-color), -265px 0 0 var(--thumb-minus-behind-color),
-      -310px 0 0 var(--thumb-minus-behind-color), -350px 0 0 var(--thumb-minus-behind-color),
-      -390px 0 0 var(--thumb-minus-behind-color), -409px 0 0 var(--thumb-minus-behind-color);
+      -220px 0 0 var(--thumb-minus-behind-color),
+      -265px 0 0 var(--thumb-minus-behind-color),
+      -310px 0 0 var(--thumb-minus-behind-color),
+      -350px 0 0 var(--thumb-minus-behind-color),
+      -390px 0 0 var(--thumb-minus-behind-color),
+      -409px 0 0 var(--thumb-minus-behind-color);
     background: var(--thumb-color);
   }
 `
@@ -150,7 +139,7 @@ const Sidebar = () => {
         </StyledQuantityWrapper>
         <li>
           ilości do umniejszenia stanu
-          <StyledContainer class='container'> 
+          <StyledContainer class='container'>
             <StyledDatalist id='custom-list'>
               <option value='-5'></option>
               <option value='-4'></option>

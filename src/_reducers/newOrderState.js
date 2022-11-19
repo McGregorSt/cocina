@@ -189,7 +189,6 @@ const newOrderState = (state = initialState, action) => {
       return produce(state, (draft) => {
         let lastOrder = state.orders[state.orders.length - 1];
         let ingredientsToReserve = [];
-        let productsToManage = action.prod
 
         state.groups.forEach((group) =>
           group.products.forEach((product) =>

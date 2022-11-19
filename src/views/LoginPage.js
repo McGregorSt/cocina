@@ -4,9 +4,7 @@ import MainTemplate from '../template/MainTemplate'
 import Button from '../components/atoms/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { authenticate, signup } from '../_actions/loginActions'
-import { Navigate, redirect, Redirect } from 'react-router-dom'
-import OrderHeading from '../components/molecules/OrderHeading'
-import { loginData } from '../data/loginJson'
+import { Navigate } from 'react-router-dom'
 
 const StyledTemplate = styled.div`
   display: flex;
@@ -66,11 +64,6 @@ const StyledPersonalData = styled.div`
   width: 60%;
 `
 
-const StyledEmail = styled.div`
-  /* width: 450px; */
-`
-
-
 const StyledLogon = styled.div`
   display: flex;
   flex-direction: column;
@@ -84,6 +77,8 @@ const StyledLogon = styled.div`
       width: 50%;
     `}
 `
+
+const StyledEmail = styled.div``
 
 const StyledField = styled.input`
   width: 330px;

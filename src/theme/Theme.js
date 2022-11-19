@@ -10,7 +10,6 @@ export const theme = {
   goldClick: 'hsl(40, 89%, 61%, 99%)',
   articles: 'hsla(62, 78%, 66%, 90%)',
   almostReady: '#f2cc8f',
-  // readyToGo: 'hsla(110, 54%, 60%, 70%)',
   readyToGo: 'hsl(151, 24%, 60%)',
   ready: 'hsl(151, 24%, 60%)',
   readyLight: 'hsl(151, 24%, 63%)',
@@ -41,30 +40,30 @@ export const theme = {
   grey800a: 'hsla(0, 0%, 20%, 70%)',
   black: 'hsl(0, 0%, 0%)',
   fontSize: {
-      xs: '10px',
-      s: '12px',
-      m: '16px',
-      l: '24px',
-      xl: '32px'
+    xs: '10px',
+    s: '12px',
+    m: '16px',
+    l: '24px',
+    xl: '32px',
   },
   leftSidebar: {
     width: '400px',
-    height: '94vh'
+    height: '94vh',
   },
   rightSidebar: {
     width: '770px',
-    height: '94vh'
+    height: '94vh',
   },
   btnSize: {
     small: '30px',
     medium: '60px',
-    large: '72px'
+    large: '72px',
   },
   fontWeight: {
-      light: 200,
-      bold: 600
+    light: 200,
+    bold: 600,
   },
   boxShadow: {
     btn: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px',
-  }
+  },
 }

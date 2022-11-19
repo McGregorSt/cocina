@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledLabel = styled.label`
   color: #4cd964;
   padding-left: 0;
-`;
+`
 const StyledInput = styled.input`
   display: none;
   &:checked ~ .teleport-switch-control-indicator {
@@ -18,7 +18,7 @@ const StyledInput = styled.input`
   &:disabled ~ .teleport-switch-control-indicator {
     opacity: 0.4;
   }
-`;
+`
 const StyledSpan = styled.span`
   display: inline-block;
   position: relative;
@@ -34,7 +34,7 @@ const StyledSpan = styled.span`
   cursor: pointer;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     width: 18px;
@@ -45,21 +45,21 @@ const StyledSpan = styled.span`
     left: 2px;
     background: #ccc;
   }
-`;
+`
 
 const ToggleSwitch = ({ checked }) => {
   return (
     <div>
-      <StyledLabel className="custom-control teleport-switch">
+      <StyledLabel className='custom-control teleport-switch'>
         <StyledInput
-          type="checkbox"
-          className="teleport-switch-control-input"
+          type='checkbox'
+          className='teleport-switch-control-input'
           checked={checked}
         />
-        <StyledSpan className="teleport-switch-control-indicator"></StyledSpan>
+        <StyledSpan className='teleport-switch-control-indicator'></StyledSpan>
       </StyledLabel>
     </div>
-  );
-};
+  )
+}
 
-export default ToggleSwitch;
+export default ToggleSwitch

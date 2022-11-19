@@ -16,11 +16,7 @@ const ItemQuantity = ({ quantity }) => {
     z-index: 2;
   `
 
-  return (
-    <StyledQuantity>
-        {quantity}x
-    </StyledQuantity>
-  )
+  return <StyledQuantity>{quantity}x</StyledQuantity>
 }
 
 export default ItemQuantity

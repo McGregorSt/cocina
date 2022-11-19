@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const ItemPrice = ({ price }) => {
-  return (
-    <div>
-      {price}
-    </div>
-  );
+  return <div>{price}</div>
 }
 
-export default ItemPrice;
+export default ItemPrice

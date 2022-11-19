@@ -1,9 +1,7 @@
-import React from 'react';
 import styled from 'styled-components'
 
 const ProductName = styled.div`
   min-width: 70%;
-  /* height: 90px; */
   display: flex;
   justify-content: center;
   align-items: center;

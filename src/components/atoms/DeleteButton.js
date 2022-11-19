@@ -1,7 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { checkMealAvailability, deleteOrderSummaryItem } from '../../_actions/newOrderActions'
+import {
+  checkMealAvailability,
+  deleteOrderSummaryItem,
+} from '../../_actions/newOrderActions'
 import closeIcon from '../../assets/close.svg'
 import EditButton from './EditButton'
 
