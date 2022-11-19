@@ -5,25 +5,23 @@ import NewOrder from './views/NewOrder'
 import ProductsMgmt from './views/ProductsMgmt'
 import LoginPage from './views/LoginPage'
 
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
-import { Routes } from 'react-router'
+import Navbar from './components/organisms/Navbar'
 
 function App() {
   return (
     <Provider store={store}>
-      <Switch>
-        <Route path='/new-order'>
-          <NewOrder />
-        </Route>
-        <Route path='/orders'>
-          <Orders />
-        </Route>
-        <Route path='/product-state'>
-          <ProductsMgmt />
-        </Route>
-      </Switch>
+      <Navbar />
+      dsdsdkdasd
+      <Routes>
+        <Route path='/new-order' element={<NewOrder />} />
+          
+        <Route path='/orders' element={<Orders />} />
+        <Route path='/product-state' element={<ProductsMgmt />} />
+        <Route exact path='/' element={<NewOrder />}/>
+      </Routes>
     </Provider>
   )
 }

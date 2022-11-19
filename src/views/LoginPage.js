@@ -156,7 +156,7 @@ const LoginPage = () => {
             <p>Kitchen Display System</p>
             <span>{`${isAuth}`}</span>
           </StyledWelcome>
-          {isAuth || isRegistrySuccessful ? <Redirect to='/orders' /> : ''}
+          {isAuth || isRegistrySuccessful ? <Navigate to='/orders' /> : ''}
           <StyledForm>
             {isLogin ? (
               ''
