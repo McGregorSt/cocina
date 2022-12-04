@@ -6,23 +6,33 @@ import SelectableProducts from '../components/molecules/SelectableProducts'
 import OrderSummary from '../components/organisms/OrderSummary'
 
 const StyledNewOrder = styled.div`
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  overflow-x: hidden;
-  position: relative;
+  /* height: 100%;
+  width: 100%; */
+  /* display: grid;
+  grid-template-columns: 4fr 1fr; */
+  /* overflow-x: hidden; */
+  /* position: relative; */
   z-index: 2;
-  &:nth-child(2n + 2) {
+  /* &:nth-child(2n + 2) {
     position: fixed;
-    top: 250px;
-  }
+    top: 150px;
+  } */
 `
 
 const StyledProductsSelection = styled.div`
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+  /* height: 100%; */
+  width: 80%;
+  /* display: flex; */
+  flex-direction: column;
+  
+  /* overflow-x: hidden; */
+`
+
+const StyledOrderSummaryWrapper = styled.div`
+  /* width: 30%; */
+  position: absolute;
+  right: 0;
+  top: 50px;
 `
 
 const NewOrder = () => {
@@ -33,7 +43,9 @@ const NewOrder = () => {
           <SelectableGroups />
           <SelectableProducts />
         </StyledProductsSelection>
-        <OrderSummary />
+        <StyledOrderSummaryWrapper>
+          <OrderSummary />
+        </StyledOrderSummaryWrapper>
       </StyledNewOrder>
     </UserPage>
   )

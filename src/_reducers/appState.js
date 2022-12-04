@@ -18,10 +18,7 @@ const appState = (state = initialState, action) => {
     case 'CHANGE_CURRENT_VIEW': {
       return produce(state, (draft) => {
         draft.currentView = action.slashUrl
-        if (state.showRightSidebar && action.slashUrl !== '/product-state') {
-          draft.showRightSidebar = false
-        }
-        if (state.showRightSidebar && action.slashUrl !== '/product-state') {
+        if (state.showRightSidebar && action.slashUrl !== '/cocina/product-supply') {
           draft.showRightSidebar = false
         }
       })

@@ -50,21 +50,21 @@ const StyledOrderItem = styled(OrderItem)`
 const OrderCard = ({
   status,
   complete,
-  orderNo,
+  orderNumber,
   orderItems,
   profiles,
   orderIndex,
 }) => {
   const dispatch = useDispatch()
-  const handleOrderDelivery = (orderNo) => {
-    dispatch(orderDelivered(orderNo))
-    dispatch(descentOfIngredients(orderNo))
+  const handleOrderDelivery = (orderNumber) => {
+    dispatch(orderDelivered(orderNumber))
+    dispatch(descentOfIngredients(orderNumber))
   }
-
+  console.log(orderNumber)
   return (
     <MainTemplate>
       <StyledOrderCard readyToGo={status}>
-        <OrderHeading status={status} orderNo={orderNo} profiles={profiles} />
+        <OrderHeading status={status} orderNumber={orderNumber} profiles={profiles} />
         <StyledContent>
           {orderItems.map(
             ({
@@ -84,7 +84,7 @@ const OrderCard = ({
                 complete={complete}
                 details={details}
                 prepDetails={prepDetails}
-                orderNo={orderNo}
+                orderNumber={orderNumber}
                 index={index}
                 size={size}
                 unit={unit}
@@ -95,8 +95,8 @@ const OrderCard = ({
             status={complete}
             onClick={() =>
               status === 'readyToGo'
-                ? handleOrderDelivery(orderNo, orderIndex)
-                : dispatch(orderReadyToGo(orderNo))
+                ? handleOrderDelivery(orderNumber, orderIndex)
+                : dispatch(orderReadyToGo(orderNumber))
             }
           >
             {status === 'readyToGo' ? 'wydane' : 'gotowe'}

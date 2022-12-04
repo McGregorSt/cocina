@@ -81,6 +81,7 @@ const RightSidebar = () => {
     return () => clearInterval(timer)
   })
 
+  console.log(name, id, inState)
   return (
     <StyledSidebar active={showRightSidebar}>
       <StyledHeader>

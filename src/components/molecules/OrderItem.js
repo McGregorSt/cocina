@@ -68,21 +68,21 @@ const OrderItem = ({
   prepDetails,
   index,
   complete,
-  orderNo,
+  orderNumber,
   size,
   unit,
 }) => {
   const dispatch = useDispatch()
 
-  const handleItemComplete = (orderNo, index) => {
-    console.log('itemCom', orderNo, index)
-    dispatch(itemComplete(orderNo, index))
-    dispatch(allItemsReady(orderNo))
-    dispatch(orderStatus(orderNo))
+  const handleItemComplete = (orderNumber, index) => {
+    console.log('itemCom', orderNumber, index)
+    dispatch(itemComplete(orderNumber, index))
+    dispatch(allItemsReady(orderNumber))
+    dispatch(orderStatus(orderNumber))
   }
 
   return (
-    <StyledItem onClick={() => handleItemComplete(orderNo, index)}>
+    <StyledItem onClick={() => handleItemComplete(orderNumber, index)}>
       <StyledGrid>
         <Checkbox selected={complete} />
         <span>{quantity}x</span>

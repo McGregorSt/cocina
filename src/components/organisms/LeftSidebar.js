@@ -61,6 +61,7 @@ const LeftSidebar = () => {
   const dispatch = useDispatch()
 
   const handleToggle = (e) => {
+    console.log('profilesOn')
     e.preventDefault()
     dispatch(profilesOn())
   }
@@ -70,12 +71,12 @@ const LeftSidebar = () => {
       <StyledMenuList>
         <StyledMenuItem>
           Profile
-          <div onClick={(e) => handleToggle(e)}>
-            <ToggleSwitch checked={profiles} />
+          <div onChange={(e) => handleToggle(e)} defaultChecked={profiles}>
+            <ToggleSwitch defaultChecked={profiles} onChange={(e) => handleToggle(e)} />
           </div>
         </StyledMenuItem>
       </StyledMenuList>
-      <StyledVersion>Wersja systemu KtchnApp: 1.0.7734.2</StyledVersion>
+      <StyledVersion>Wersja systemu Cocina: 1.2.8259.2</StyledVersion>
     </StyledSidebar>
   )
 }

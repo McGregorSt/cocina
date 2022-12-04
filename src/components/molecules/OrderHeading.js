@@ -22,13 +22,13 @@ const StyledUsers = styled.div`
   align-items: center;
 `
 
-const OrderHeading = ({ orderNo, status, profiles }) => {
+const OrderHeading = ({ orderNumber, status, profiles }) => {
   const dispatch = useDispatch()
   const profilesOn = useSelector((state) => state.appState.profilesOn)
 
   return (
     <StyledOrderHeading status={status}>
-      # {orderNo}
+      # {orderNumber}
       <StyledUsers>
         {profilesOn
           ? profiles.map((profile) => {
@@ -36,7 +36,7 @@ const OrderHeading = ({ orderNo, status, profiles }) => {
               return (
                 <Avatar
                   key={Math.random()}
-                  onClick={() => dispatch(profileSelected(orderNo, profile))}
+                  onClick={() => dispatch(profileSelected(orderNumber, profile))}
                   active={profile.isActive}
                   avatarType={profile.url}
                 />

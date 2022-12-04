@@ -18,7 +18,7 @@ const Orders = () => {
             key={Math.random()}
             status={status}
             complete={complete}
-            orderNo={number}
+            orderNumber={number}
             orderIndex={index}
             orderItems={orderItems}
             prepDetails={prepDetails}

@@ -76,7 +76,7 @@ const Navbar = () => {
               activeclass='active'
             />
           </StyledNavItem>
-          <StyledNavItem exact as={NavLink} to='/orders'>
+          <StyledNavItem as={NavLink} to='/orders'>
             <NavItem
               itemName='orders'
               itemIcon={checklist}

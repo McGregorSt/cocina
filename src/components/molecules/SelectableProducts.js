@@ -6,6 +6,7 @@ import ProductItem from './ProductItem'
 const StyledSelectableProducts = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 30px;
 `
 const SelectableProducts = () => {
@@ -16,17 +17,26 @@ const SelectableProducts = () => {
       <StyledSelectableProducts>
         {chosenGroup === null || !chosenGroup[0].products
           ? ''
-          : chosenGroup[0].products.map(({ index, itemName, size, unit, readyToPrepare, ingredients }) => (
-              <ProductItem
-                key={Math.random()}
-                itemName={itemName}
-                index={index}
-                size={size}
-                unit={unit}
-                readyToPrepare={readyToPrepare}
-                ingredients={ingredients}
-              />
-            ))}
+          : chosenGroup[0].products.map(
+              ({
+                index,
+                itemName,
+                size,
+                unit,
+                readyToPrepare,
+                ingredients,
+              }) => (
+                <ProductItem
+                  key={Math.random()}
+                  itemName={itemName}
+                  index={index}
+                  size={size}
+                  unit={unit}
+                  readyToPrepare={readyToPrepare}
+                  ingredients={ingredients}
+                />
+              )
+            )}
       </StyledSelectableProducts>
     </div>
   )

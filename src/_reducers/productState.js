@@ -104,6 +104,7 @@ const productState = (state = initialState, action) => {
           (product) => product.id === action.id
         );
         const productToDisplay = products[productIndex];
+        console.log(productToDisplay)
         draft.productToDisplayOnRightSidebar = productToDisplay;
         draft.rightsidebarViewOpenTime = timeNow.toISOString();
       });

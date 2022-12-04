@@ -7,11 +7,15 @@ const ordersState = (state = initialState, action) => {
   switch(action.type) {
     case 'ITEM_READY': {
       return produce(state, draft => {
-        const data = original(draft.orders)
-        console.log('ITEM_READY', state)
-        const orderIndex = state.orders.findIndex(order => console.log(order))
-        const itemIndex = data[orderIndex].orderItems.findIndex(item => item.index === action.orderItemId)
+        const data = original(draft)
+        console.log(data)
+        const orderIndex = data.findIndex(order => order.number === action.orderNumber)
+        // const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+        // console.log(data.orders, data.orders[orderIndex])
+        console.log('ITEM_READY', draft[orderIndex])
+        const itemIndex = data[orderIndex].orderItems.findIndex(item => item.index === action.index)
         draft[orderIndex].orderItems[itemIndex].complete = !draft[orderIndex].orderItems[itemIndex].complete
+        // draft[orderIndex].orderItems[itemIndex].complete = !draft[orderIndex].orderItems[itemIndex].complete
       })
     }
     case 'ALL_ITEMS_READY': {
@@ -79,24 +83,22 @@ const ordersState = (state = initialState, action) => {
           }
         }
         if (!profileActive) {
-          draft[orderIndex].status = 'notReady'
+          draft.orders[orderIndex].status = 'notReady'
         } 
       })
     }
     case 'ORDER_READY_TO_GO': {
       return produce(state, draft => {
-        const data = original(draft)
-        const orderIndex = data.findIndex(order => order.number === action.orderNumber)
-        draft[orderIndex].status = 'readyToGo'
+        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+        draft.orders[orderIndex].status = 'readyToGo'
       })
     }
     case 'ORDER_DELIVERED': {
       return produce(state, draft => {
-        const data = original(draft)
-        const orderIndex = data.findIndex(order => order.number === action.orderNumber)
-        const orderComplete = data[orderIndex].complete
+        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+        const orderComplete = state.orders[orderIndex].complete
         if (orderComplete) {
-          draft.splice(orderIndex, 1)
+          draft.orders.splice(orderIndex, 1)
         }
       })
     }
