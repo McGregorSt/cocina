@@ -1,5 +1,6 @@
 import produce from 'immer'
 import { newOrder } from '../data/newOrderJson'
+import { faker } from '@faker-js/faker';
 
 const initialState = newOrder
 
@@ -56,8 +57,6 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'PROFILE_SELECTED': {
       return produce(state, draft => {
-        console.log(action.profile)
-        console.log(state.profiles)
         const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
         const profileName = state.orders[orderIndex].profiles.map(profile => profile.profileName)
         const profileActive = state.orders[orderIndex].profiles.map(profile => profile.isActive)
@@ -84,13 +83,17 @@ const newOrderState = (state = initialState, action) => {
       return produce(state, draft => {
         const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
         draft.orders[orderIndex].status = 'readyToGo'
+        draft.orders[orderIndex].endDate = new Date(Date.now())
+        draft.orders[orderIndex].complete = true
       })
     }
     case 'ORDER_DELIVERED': {
       return produce(state, draft => {
         const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
         const orderComplete = state.orders[orderIndex].complete
+        draft.orders[orderIndex].status = 'delivered'
         if (orderComplete) {
+          draft.closedOrders.push({...state.orders[orderIndex], status: 'delivered'})
           draft.orders.splice(orderIndex, 1)
         }
       })
@@ -202,15 +205,15 @@ const newOrderState = (state = initialState, action) => {
     case 'POST_NEW_ORDER': {
       return produce(state, (draft) => {
         const orders = draft.orders
-        console.log(state.orders)
+        const closedOrders = draft.closedOrders
         const newOrderSummary = draft.newOrderSummary
         const profiles = state.profiles
 
         const orderNumber = () => {
           if (orders.length < 10) {
-            return `00${orders.length + 1}`
+            return `00${orders.length + closedOrders.length + 1}`
           } else if (orders.length >= 10 && orders.length < 100) {
-            return `0${orders.length + 1}`
+            return `0${orders.length + closedOrders.length + 1}`
           }
         }
         const orderItems = []
@@ -233,14 +236,19 @@ const newOrderState = (state = initialState, action) => {
           complete: false,
           orderItems: orderItems,
           profiles: profiles,
+          guid: faker.datatype.uuid(),
+          startDate: new Date(Date.now()),
+          endDate: 0
         }
 
         let newOrder = draft.orders
-        newOrder.push(orderTemplate)
-        draft.orders = newOrder
-        draft.newOrderSummary = []
-        draft.totalPrice = 0.0
-        draft.chosenProduct = []
+        if (newOrderSummary.length > 0) {
+          newOrder.push(orderTemplate)
+          draft.orders = newOrder
+          draft.newOrderSummary = []
+          draft.totalPrice = 0.0
+          draft.chosenProduct = []
+        }
       })
     }
     case 'CHECK_INGR_AVAILABILITY': {
@@ -256,7 +264,6 @@ const newOrderState = (state = initialState, action) => {
               if (product.inState.ready >= ingr.quantity) {
                 // productsToManage[index].inState.locked =+ ingr.quantity;
                 // productsToManage[index].inState.ready -= ingr.quantity;
-                // console.log('productsToManage', productsToManage)
               } else {
                 let missingQuantity = ingr.quantity - product.inState.ready
                 let newIngr = {
@@ -279,37 +286,39 @@ const newOrderState = (state = initialState, action) => {
     case 'RESERVE_PRODUCTS': {
       return produce(state, (draft) => {
         let lastOrder = state.orders[state.orders.length - 1]
+        let newOrderSummary = state.newOrderSummary
         let ingredientsToReserve = []
 
-        state.groups.forEach((group) =>
-          group.products.forEach((product) =>
-            lastOrder.orderItems.forEach((item) => {
-              // if (product.inState.ready >= item.quantity) {
-              //   product.inState.locked =+ item.quantity;
-              //   product.inState.ready -= item.quantity;
-              //   // console.log('productsToManage', productsToManage)
-              // }
-              if (product.index === item.index) {
-                if (item.quantity > 1) {
-                  let newProductIngredientsQuantity = product.ingredients.map(
-                    (ingr) => {
-                      let itemQuantity = Number(item.quantity)
-                      let newIngrQuantity = ingr.quantity * itemQuantity
-                      return (ingr = {
-                        ...ingr,
-                        quantity: newIngrQuantity,
-                      })
-                    }
-                  )
-                  ingredientsToReserve.push(newProductIngredientsQuantity)
-                } else {
-                  ingredientsToReserve.push(product.ingredients)
+        if (newOrderSummary.length > 0) {
+          state.groups.forEach((group) =>
+            group.products.forEach((product) =>
+              lastOrder.orderItems.forEach((item) => {
+                // if (product.inState.ready >= item.quantity) {
+                //   product.inState.locked =+ item.quantity;
+                //   product.inState.ready -= item.quantity;
+                // }
+                if (product.index === item.index) {
+                  if (item.quantity > 1) {
+                    let newProductIngredientsQuantity = product.ingredients.map(
+                      (ingr) => {
+                        let itemQuantity = Number(item.quantity)
+                        let newIngrQuantity = ingr.quantity * itemQuantity
+                        return (ingr = {
+                          ...ingr,
+                          quantity: newIngrQuantity,
+                        })
+                      }
+                    )
+                    ingredientsToReserve.push(newProductIngredientsQuantity)
+                  } else {
+                    ingredientsToReserve.push(product.ingredients)
+                  }
                 }
-              }
-            })
+              })
+            )
           )
-        )
-        draft.ingredientsToReserve = [...ingredientsToReserve]
+          draft.ingredientsToReserve = [...ingredientsToReserve]
+        }
       })
     }
     // case 'ITEM_READY': {

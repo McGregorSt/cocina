@@ -18,7 +18,11 @@ const StyledOrderCard = styled.div`
   margin: 25px 0 0 25px;
   position: relative;
 `
-
+const StyledPreparationTime = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 0 0;
+`
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,17 +58,31 @@ const OrderCard = ({
   orderItems,
   profiles,
   orderIndex,
+  startDate,
+  endDate,
 }) => {
+  let timeDelta
+  const preparationTime = (startDate, endDate) => { 
+    timeDelta = (Date.parse(endDate) - Date.parse(startDate)) / 1000
+    if (timeDelta >= 60) {
+      return `${parseInt(timeDelta/60)}m ${timeDelta%60}s`
+    } else {
+      return `${timeDelta%60}s`
+    }
+  }
   const dispatch = useDispatch()
   const handleOrderDelivery = (orderNumber) => {
     dispatch(orderDelivered(orderNumber))
     dispatch(descentOfIngredients(orderNumber))
   }
-  console.log(orderNumber)
   return (
     <MainTemplate>
       <StyledOrderCard readyToGo={status}>
-        <OrderHeading status={status} orderNumber={orderNumber} profiles={profiles} />
+        <OrderHeading
+          status={status}
+          orderNumber={orderNumber}
+          profiles={profiles}
+        />
         <StyledContent>
           {orderItems.map(
             ({
@@ -91,16 +109,23 @@ const OrderCard = ({
               />
             )
           )}
-          <Button
-            status={complete}
-            onClick={() =>
-              status === 'readyToGo'
-                ? handleOrderDelivery(orderNumber, orderIndex)
-                : dispatch(orderReadyToGo(orderNumber))
-            }
-          >
-            {status === 'readyToGo' ? 'wydane' : 'gotowe'}
-          </Button>
+          {status === 'delivered' ? (
+            <StyledPreparationTime>
+              Order was prepared in: {preparationTime(startDate, endDate)}
+
+            </StyledPreparationTime>
+          ) : (
+            <Button
+              status={complete}
+              onClick={() =>
+                status === 'readyToGo'
+                  ? handleOrderDelivery(orderNumber, orderIndex)
+                  : dispatch(orderReadyToGo(orderNumber))
+              }
+            >
+              {status === 'readyToGo' ? 'wydane' : 'gotowe'}
+            </Button>
+          )}
         </StyledContent>
       </StyledOrderCard>
     </MainTemplate>

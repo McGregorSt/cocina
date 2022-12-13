@@ -8,11 +8,8 @@ const ordersState = (state = initialState, action) => {
     case 'ITEM_READY': {
       return produce(state, draft => {
         const data = original(draft)
-        console.log(data)
         const orderIndex = data.findIndex(order => order.number === action.orderNumber)
         // const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
-        // console.log(data.orders, data.orders[orderIndex])
-        console.log('ITEM_READY', draft[orderIndex])
         const itemIndex = data[orderIndex].orderItems.findIndex(item => item.index === action.index)
         draft[orderIndex].orderItems[itemIndex].complete = !draft[orderIndex].orderItems[itemIndex].complete
         // draft[orderIndex].orderItems[itemIndex].complete = !draft[orderIndex].orderItems[itemIndex].complete

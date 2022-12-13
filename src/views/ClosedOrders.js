@@ -3,15 +3,24 @@ import OrderCard from '../components/organisms/OrderCard'
 import UserPage from '../template/UserPage'
 import { useSelector } from 'react-redux'
 
-const Orders = () => {
-  const activeOrders = useSelector((state) => state.newOrderState.orders)
-  // let activeOrders = orders.filter((order) => order.status !== 'Delivered')
+const ClosedOrders = () => {
+  const closedOrders = useSelector((state) => state.newOrderState.closedOrders)
+  // let closedOrders = orders.filter((order) => order.status !== 'Delivered')
 
   return (
     <UserPage>
-      {activeOrders.map(
+      {closedOrders.map(
         (
-          { status, complete, number, orderItems, prepDetails, profiles, startDate, endDate },
+          {
+            status,
+            complete,
+            number,
+            orderItems,
+            prepDetails,
+            profiles,
+            startDate,
+            endDate,
+          },
           index
         ) => (
           <OrderCard
@@ -32,4 +41,4 @@ const Orders = () => {
   )
 }
 
-export default Orders
+export default ClosedOrders

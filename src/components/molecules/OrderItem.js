@@ -28,7 +28,7 @@ const StyledItem = styled.div`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 0.5fr 0.3fr 2fr 0.3fr;
+  grid-template-columns: 0.5fr 0.45fr 1fr 0.4fr;
   cursor: pointer;
   padding: 10px;
 `
@@ -75,7 +75,6 @@ const OrderItem = ({
   const dispatch = useDispatch()
 
   const handleItemComplete = (orderNumber, index) => {
-    console.log('itemCom', orderNumber, index)
     dispatch(itemComplete(orderNumber, index))
     dispatch(allItemsReady(orderNumber))
     dispatch(orderStatus(orderNumber))
@@ -86,7 +85,8 @@ const OrderItem = ({
       <StyledGrid>
         <Checkbox selected={complete} />
         <span>{quantity}x</span>
-        <span>{`${item} ${size}${unit}`}</span>
+        <span>{`${item}`}</span>
+        <span>{`${size}${unit}`}</span>
       </StyledGrid>
       <StyledDetails>
         {details ? <StyledDropdown /> : ''}

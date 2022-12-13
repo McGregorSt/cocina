@@ -36,7 +36,6 @@ const ProductFooter = ({ name, id, currentQuantity, setCurrentQty }) => {
   const dispatch = useDispatch()
 
   const handleRightSidebar = () => {
-    console.log(id)
     dispatch(showRightSidebar())
     dispatch(showProductOnRightSidebar(id))
     dispatch(updateStateRightsidebar())

@@ -469,6 +469,7 @@ export const newOrder = {
   // productViewOpenTime: null,
   chosenGroup: null,
   newOrderSummary: [],
+  chosenProduct: [],
   orders: [
   //   {
   //     "number": "001",
@@ -506,10 +507,9 @@ export const newOrder = {
   //     ]
   // }
   ],
+  closedOrders: [],
   totalPrice: 0,
   showOrderSummary: false,
-  // productsToManage: null,
-  // readyToPrepare: false,
   ingredientsToReserve: [],
   profiles: [
     {

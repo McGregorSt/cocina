@@ -90,6 +90,13 @@ const Navbar = () => {
               activeclass='active'
             />
           </StyledNavItem>
+          <StyledNavItem as={NavLink} to='/closed-orders'>
+            <NavItem
+              itemName='closed orders'
+              itemIcon={checklist}
+              activeclass='active'
+            />
+          </StyledNavItem>
         </StyledItems>
       </StyledWrapper>
     </div>

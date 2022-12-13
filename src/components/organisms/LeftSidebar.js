@@ -61,7 +61,6 @@ const LeftSidebar = () => {
   const dispatch = useDispatch()
 
   const handleToggle = (e) => {
-    console.log('profilesOn')
     e.preventDefault()
     dispatch(profilesOn())
   }

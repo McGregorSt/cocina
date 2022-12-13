@@ -32,7 +32,6 @@ const OrderHeading = ({ orderNumber, status, profiles }) => {
       <StyledUsers>
         {profilesOn
           ? profiles.map((profile) => {
-              console.log(profile)
               return (
                 <Avatar
                   key={Math.random()}

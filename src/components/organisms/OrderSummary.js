@@ -18,8 +18,6 @@ const StyledOrderSummary = styled.div`
   border-bottom: 10px solid ${theme.grey800};
   color: ${theme.grey800};
   padding: 0 10px 20px 10px;
-  /* top: 10%; */
-  /* left: 100px; */
   & * > p {
     font-size: 1.1rem;
     font-weight: 600;
@@ -27,7 +25,6 @@ const StyledOrderSummary = styled.div`
   ${({ active }) =>
     active &&
     css`
-      /* left: 0; */
       transition: 0.5s;
     `}
 `
