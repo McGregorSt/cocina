@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import menu from '../../assets/menu-white.svg'
 import orders from '../../assets/orders.svg'
+import order from '../../assets/order.svg'
+import closedOrder from '../../assets/order_play.svg'
+import tv from '../../assets/tv.svg'
 import checklist from '../../assets/checklist.svg'
 import management from '../../assets/business-management.svg'
 import { NavLink } from 'react-router-dom'
@@ -79,7 +82,7 @@ const Navbar = () => {
           <StyledNavItem as={NavLink} to='/orders'>
             <NavItem
               itemName='orders'
-              itemIcon={checklist}
+              itemIcon={order}
               activeclass='active'
             />
           </StyledNavItem>
@@ -93,7 +96,14 @@ const Navbar = () => {
           <StyledNavItem as={NavLink} to='/closed-orders'>
             <NavItem
               itemName='closed orders'
-              itemIcon={checklist}
+              itemIcon={closedOrder}
+              activeclass='active'
+            />
+          </StyledNavItem>
+          <StyledNavItem as={NavLink} to='/customer-view'>
+            <NavItem
+              itemName='customer view'
+              itemIcon={tv}
               activeclass='active'
             />
           </StyledNavItem>

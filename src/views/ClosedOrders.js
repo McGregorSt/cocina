@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 
 const ClosedOrders = () => {
   const closedOrders = useSelector((state) => state.newOrderState.closedOrders)
-  // let closedOrders = orders.filter((order) => order.status !== 'Delivered')
 
   return (
     <UserPage>
