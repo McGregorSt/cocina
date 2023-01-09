@@ -13,9 +13,10 @@ const StyledOrderSummary = styled.div`
   width: 450px;
   position: relative;
   background-color: ${({ theme }) => theme.gold};
-  border-top: 10px solid ${theme.grey800};
-  border-left: 35px solid ${theme.grey800};
-  border-bottom: 10px solid ${theme.grey800};
+  border-top: 3px solid ${theme.grey800};
+  border-left: 20px solid ${theme.grey800};
+  border-bottom: 3px solid ${theme.grey800};
+  border-radius: 20px 0 0 20px;
   color: ${theme.grey800};
   padding: 0 10px 20px 10px;
   & * > p {

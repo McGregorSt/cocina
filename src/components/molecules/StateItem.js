@@ -15,7 +15,7 @@ const StateItem = ({ icon, quantity }) => {
   return (
     <StyledStateItem>
       <Icon icon={icon} />
-      <div>{quantity}</div>
+      <div>{quantity.toFixed(2)}</div>
     </StyledStateItem>
   )
 }

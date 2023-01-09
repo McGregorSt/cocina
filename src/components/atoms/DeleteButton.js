@@ -7,8 +7,9 @@ import {
 } from '../../_actions/newOrderActions'
 import closeIcon from '../../assets/close.svg'
 import EditButton from './EditButton'
+import { mealDeleteFromOrder } from '../../_actions/productActions'
 
-const DeleteButton = ({ index, price, ingredients }) => {
+const DeleteButton = ({ index, price, quantity, ingredients }) => {
   const StyledWrapper = styled.div`
     display: flex;
     justify-content: right;
@@ -22,7 +23,8 @@ const DeleteButton = ({ index, price, ingredients }) => {
   const dispatch = useDispatch()
 
   const handleDeleteOrderSummaryItem = () => {
-    dispatch(deleteOrderSummaryItem(index, price))
+    dispatch(mealDeleteFromOrder(index))
+    dispatch(deleteOrderSummaryItem(index, price, quantity))
     dispatch(checkMealAvailability(index, ingredients))
   }
 

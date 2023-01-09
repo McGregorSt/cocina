@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cocina/static/css/main.e6161af3.css",
-    "main.js": "/cocina/static/js/main.e7e277a3.js",
+    "main.js": "/cocina/static/js/main.b5c9218a.js",
     "static/media/dropdown.png": "/cocina/static/media/dropdown.d435c9afd0042ef26838.png",
     "static/media/lion.svg": "/cocina/static/media/lion.02a499d95b45ea7c93d83e59111d0967.svg",
     "static/media/chuck.svg": "/cocina/static/media/chuck.390a7e47a080083ce65aadf8eb1be717.svg",
@@ -9,6 +9,8 @@
     "static/media/orders.svg": "/cocina/static/media/orders.2fe5fc1abf47002aa50fd8bd3c0a81ce.svg",
     "static/media/checklist.svg": "/cocina/static/media/checklist.6d71ca308898a6405ad1af459f9a96af.svg",
     "index.html": "/cocina/index.html",
+    "static/media/order.svg": "/cocina/static/media/order.ef0655a982a2902c73dec6680a21a633.svg",
+    "static/media/order_play.svg": "/cocina/static/media/order_play.74ac29403f8e1598b94b8a36e15916af.svg",
     "static/media/dining.svg": "/cocina/static/media/dining.0eee9dc5a8332f73fff158c0fc63580e.svg",
     "static/media/lock.svg": "/cocina/static/media/lock.733ab3245b84fd4f035e9b4cc3113fff.svg",
     "static/media/schedule.svg": "/cocina/static/media/schedule.2e728acd7ea129290e1211b963d1563e.svg",
@@ -18,13 +20,14 @@
     "static/media/add.svg": "/cocina/static/media/add.d5a121671782dcbfae0076b62b82ecbc.svg",
     "static/media/check_box_blank.svg": "/cocina/static/media/check_box_blank.bb8b4cd01b165e2b396e9f818eb1b6bc.svg",
     "static/media/close.svg": "/cocina/static/media/close.53c9f4b6ba9fca553d1eb9cda88a11af.svg",
+    "static/media/tv.svg": "/cocina/static/media/tv.76cec3c18d2317f42de20d537732836f.svg",
     "static/media/remove.svg": "/cocina/static/media/remove.ff4989146d05e60468b5cff69cb7fd09.svg",
     "static/media/menu-white.svg": "/cocina/static/media/menu-white.71abf06623d275caa262f8581f3dd220.svg",
     "main.e6161af3.css.map": "/cocina/static/css/main.e6161af3.css.map",
-    "main.e7e277a3.js.map": "/cocina/static/js/main.e7e277a3.js.map"
+    "main.b5c9218a.js.map": "/cocina/static/js/main.b5c9218a.js.map"
   },
   "entrypoints": [
     "static/css/main.e6161af3.css",
-    "static/js/main.e7e277a3.js"
+    "static/js/main.b5c9218a.js"
   ]
 }

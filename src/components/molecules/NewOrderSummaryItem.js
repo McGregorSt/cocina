@@ -35,7 +35,7 @@ const NewOrderSummaryItem = ({
       <ItemQuantity quantity={quantity} />
       <ItemNameAndSize name={name} size={size} unit={unit} />
       <ItemPrice price={price} />
-      <DeleteButton index={index} price={price} ingredients={ingredients} />
+      <DeleteButton index={index} price={price} quantity={quantity} ingredients={ingredients}/>
     </StyledNewOrderSummaryItem>
   )
 }

@@ -11,6 +11,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { changeCurrentView, showLeftSidebar } from '../../_actions/mainActions'
 import NavItem from '../molecules/NavItem'
+import { checkMealAvailability } from '../../_actions/newOrderActions'
 
 const StyledWrapper = styled.div`
   height: 6vh;

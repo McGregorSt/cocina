@@ -23,13 +23,14 @@ export const chooseProduct = (index, itemName) => {
 }
 
 export const deleteOrderSummaryItem =
-  (index, price) => (dispatch, getState) => {
+  (index, price, quantity) => (dispatch, getState) => {
     const productsToManage = getState().productState.productsToManage
     dispatch({
       type: 'DELETE_ORDER_SUMMARY_ITEM',
       productsToManage: productsToManage,
       index,
       price,
+      quantity
     })
   }
 

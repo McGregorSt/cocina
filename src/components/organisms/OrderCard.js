@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux'
 import { descentOfIngredients } from '../../_actions/productActions'
 
 const StyledOrderCard = styled.div`
+  width: 280px;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.grey100};
   box-shadow: ${({ readyToGo, theme }) =>
@@ -72,8 +73,8 @@ const OrderCard = ({
   }
   const dispatch = useDispatch()
   const handleOrderDelivery = (orderNumber) => {
-    dispatch(orderDelivered(orderNumber))
     dispatch(descentOfIngredients(orderNumber))
+    dispatch(orderDelivered(orderNumber))
   }
   return (
     <MainTemplate>

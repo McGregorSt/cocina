@@ -1,12 +1,14 @@
 import React from 'react'
 import ProductToOrder from '../atoms/ProductToOrder'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   checkIngrAvailability,
   checkMealAvailability,
   chooseProduct,
+  reserveProducts,
 } from '../../_actions/newOrderActions'
 import styled from 'styled-components'
+import { lockIngredients } from '../../_actions/productActions'
 
 const StyledProductToOrder = styled(ProductToOrder)`
   display: flex;
@@ -22,15 +24,23 @@ const ProductItem = ({
   ingredients,
 }) => {
   const dispatch = useDispatch()
+  const insufficientIngredients = useSelector(state => state.newOrderState.ingredientsWithInsufficientQuantity)
+  const insufficientIngredientsList = insufficientIngredients.forEach(ingr => {
+    console.log(ingr)
+    return ingr.name
+  })
 
   const handleProductChoice = () => {
+    console.log(index, itemName, readyToPrepare)
+
     readyToPrepare
       ? dispatch(
           checkMealAvailability(),
           dispatch(chooseProduct(index, itemName)),
+          dispatch(lockIngredients()),
           dispatch(checkIngrAvailability(index, ingredients))
         )
-      : alert('Product unavailable now')
+      : alert(`Product unavailable now. Supply ingredients: `)
   }
 
   return (

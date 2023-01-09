@@ -28,7 +28,7 @@ const StyledItem = styled.div`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 0.5fr 0.45fr 1fr 0.4fr;
+  grid-template-columns: 0.4fr 0.25fr 1.5fr 0.4fr;
   cursor: pointer;
   padding: 10px;
 `

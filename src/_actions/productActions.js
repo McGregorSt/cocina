@@ -12,36 +12,36 @@ export const showRightSidebar = () => {
 
 export const closeRightSidebar = () => {
   return {
-    type: 'CLOSE_RIGHT_SIDEBAR'
+    type: 'CLOSE_RIGHT_SIDEBAR',
   }
 }
 
 export const addProductToState = (id, currentValue) => {
   return {
     type: 'ADD_PRODUCT_TO_STATE',
-    id, 
-    currentValue
+    id,
+    currentValue,
   }
 }
 
 export const updateValueToAdd = (id, currentValue) => {
   return {
     type: 'UPDATE_VALUE_TO_ADD',
-    id, 
-    currentValue
+    id,
+    currentValue,
   }
 }
 
 export const changeProductCounter = () => {
   return {
-    type: 'CHANGE_PRODUCT_COUNTER'
+    type: 'CHANGE_PRODUCT_COUNTER',
   }
 }
 
 export const showProductOnRightSidebar = (id) => {
   return {
     type: 'SHOW_PRODUCT_ON_RIGHTSIDEBAR',
-    id
+    id,
   }
 }
 
@@ -49,10 +49,10 @@ export const changePreparationTime = (id, minutes, seconds) => {
   return {
     type: 'CHANGE_PREPARATION_TIME',
     payload: {
-      id, 
+      id,
       minutes,
-      seconds
-    }
+      seconds,
+    },
   }
 }
 
@@ -61,65 +61,74 @@ export const timerTick = (id, time) => {
     type: 'TIMER_TICK',
     payload: {
       id,
-      time
-    }
+      time,
+    },
   }
-} 
+}
 
 export const changeStatus = (id) => {
   return {
     type: 'CHANGE_STATUS',
-    id
+    id,
   }
-} 
+}
 
 export const updateStateRightsidebar = () => {
   return {
     type: 'UPDATE_STATE_RIGHTSIDEBAR',
   }
-} 
+}
 
 export const productViewLoadTime = () => {
   return {
     type: 'PRODUCT_VIEW_LOAD_TIME',
   }
-} 
+}
 
 export const preparationReady = (id, productId) => {
   return {
     type: 'PREPARATION_READY',
     payload: {
       id,
-      productId
-    }
+      productId,
+    },
   }
-} 
+}
 
 export const stockEntryRemove = (id, productId) => {
   return {
     type: 'STOCK_ENTRY_REMOVE',
     payload: {
       id,
-      productId
-    }
+      productId,
+    },
   }
-} 
+}
 
 export const lockIngredients = () => (dispatch, getState) => {
-  const ingredientsToReserve = getState().newOrderState.ingredientsToReserve
+  const chosenProduct = getState().newOrderState.chosenProduct
   dispatch({
-    type: "LOCK_INGREDIENTS",
-    ingredientsToReserve: ingredientsToReserve,
-  });
-};
+    type: 'LOCK_INGREDIENTS',
+    chosenProduct,
+  })
+}
 
 export const descentOfIngredients = (orderNo) => (dispatch, getState) => {
   const mealGroups = getState().newOrderState.groups
   const orders = getState().newOrderState.orders
   dispatch({
-    type: "DESCENT_OF_INGREDIENTS",
-    mealGroups: mealGroups,
+    type: 'DESCENT_OF_INGREDIENTS',
+    mealGroups,
     orderNo,
-    orders: orders
-  });
-};
+    orders,
+  })
+}
+
+export const mealDeleteFromOrder = (mealIndex) => (dispatch, getState) => {
+  const newOrderSummary = getState().newOrderState.newOrderSummary
+  dispatch({
+    type: 'MEAL_DELETE_FROM_ORDER',
+    newOrderSummary,
+    mealIndex
+  })
+}

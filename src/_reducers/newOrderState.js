@@ -1,24 +1,31 @@
 import produce from 'immer'
 import { newOrder } from '../data/newOrderJson'
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker'
 
 const initialState = newOrder
 
 const newOrderState = (state = initialState, action) => {
   switch (action.type) {
     case 'ITEM_READY': {
-      return produce(state, draft => {
-        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
-        const itemIndex = state.orders[orderIndex].orderItems.findIndex(item => item.index === action.index)
-        draft.orders[orderIndex].orderItems[itemIndex].complete = !draft.orders[orderIndex].orderItems[itemIndex].complete
+      return produce(state, (draft) => {
+        const orderIndex = state.orders.findIndex(
+          (order) => order.number === action.orderNumber
+        )
+        const itemIndex = state.orders[orderIndex].orderItems.findIndex(
+          (item) => item.index === action.index
+        )
+        draft.orders[orderIndex].orderItems[itemIndex].complete =
+          !draft.orders[orderIndex].orderItems[itemIndex].complete
       })
     }
     case 'ALL_ITEMS_READY': {
-      return produce(state, draft => {
-        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+      return produce(state, (draft) => {
+        const orderIndex = state.orders.findIndex(
+          (order) => order.number === action.orderNumber
+        )
         const itemsCounter = state.orders[orderIndex].orderItems.length
         let itemsCompletedCounter = 0
-        state.orders[orderIndex].orderItems.map(item => {
+        state.orders[orderIndex].orderItems.map((item) => {
           if (item.complete) {
             itemsCompletedCounter += 1
           }
@@ -32,11 +39,13 @@ const newOrderState = (state = initialState, action) => {
       })
     }
     case 'ORDER_STATUS': {
-      return produce(state, draft => {
-        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+      return produce(state, (draft) => {
+        const orderIndex = state.orders.findIndex(
+          (order) => order.number === action.orderNumber
+        )
         const itemsCounter = state.orders[orderIndex].orderItems.length
         let itemsCompletedCounter = 0
-        state.orders[orderIndex].orderItems.map(item => {
+        state.orders[orderIndex].orderItems.map((item) => {
           if (item.complete) {
             itemsCompletedCounter += 1
           }
@@ -46,29 +55,37 @@ const newOrderState = (state = initialState, action) => {
           draft.orders[orderIndex].status = 'notReady'
           draft.orders[orderIndex].profiles[0].active = false
           draft.orders[orderIndex].profiles[1].active = false
-        } 
+        }
         if (itemsCompletedCounter > 0 && itemsCompletedCounter < itemsCounter) {
           draft.orders[orderIndex].status = 'almostReady'
-        } 
+        }
         if (itemsCompletedCounter === itemsCounter) {
           draft.orders[orderIndex].status = 'ready'
-        } 
+        }
       })
     }
     case 'PROFILE_SELECTED': {
-      return produce(state, draft => {
-        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
-        const profileName = state.orders[orderIndex].profiles.map(profile => profile.profileName)
-        const profileActive = state.orders[orderIndex].profiles.map(profile => profile.isActive)
+      return produce(state, (draft) => {
+        const orderIndex = state.orders.findIndex(
+          (order) => order.number === action.orderNumber
+        )
+        const profileName = state.orders[orderIndex].profiles.map(
+          (profile) => profile.profileName
+        )
+        const profileActive = state.orders[orderIndex].profiles.map(
+          (profile) => profile.isActive
+        )
         if (profileName[0] === action.profile.profileName) {
-          draft.orders[orderIndex].profiles[0].isActive = !draft.orders[orderIndex].profiles[0].isActive
+          draft.orders[orderIndex].profiles[0].isActive =
+            !draft.orders[orderIndex].profiles[0].isActive
           draft.orders[orderIndex].profiles[1].isActive = false
           if (state.orders[orderIndex].status === 'notReady') {
             draft.orders[orderIndex].status = 'almostReady'
           }
         }
         if (profileName[1] === action.profile.profileName) {
-          draft.orders[orderIndex].profiles[1].isActive = !draft.orders[orderIndex].profiles[1].isActive
+          draft.orders[orderIndex].profiles[1].isActive =
+            !draft.orders[orderIndex].profiles[1].isActive
           draft.orders[orderIndex].profiles[0].isActive = false
           if (state.orders[orderIndex].status === 'notReady') {
             draft.orders[orderIndex].status = 'almostReady'
@@ -76,24 +93,31 @@ const newOrderState = (state = initialState, action) => {
         }
         if (!profileActive) {
           draft.orders[orderIndex].status = 'notReady'
-        } 
+        }
       })
     }
     case 'ORDER_READY_TO_GO': {
-      return produce(state, draft => {
-        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+      return produce(state, (draft) => {
+        const orderIndex = state.orders.findIndex(
+          (order) => order.number === action.orderNumber
+        )
         draft.orders[orderIndex].status = 'readyToGo'
         draft.orders[orderIndex].endDate = new Date(Date.now())
         draft.orders[orderIndex].complete = true
       })
     }
     case 'ORDER_DELIVERED': {
-      return produce(state, draft => {
-        const orderIndex = state.orders.findIndex(order => order.number === action.orderNumber)
+      return produce(state, (draft) => {
+        const orderIndex = state.orders.findIndex(
+          (order) => order.number === action.orderNumber
+        )
         const orderComplete = state.orders[orderIndex].complete
         draft.orders[orderIndex].status = 'delivered'
         if (orderComplete) {
-          draft.closedOrders.push({...state.orders[orderIndex], status: 'delivered'})
+          draft.closedOrders.push({
+            ...state.orders[orderIndex],
+            status: 'delivered',
+          })
           draft.orders.splice(orderIndex, 1)
         }
       })
@@ -129,6 +153,10 @@ const newOrderState = (state = initialState, action) => {
               if (ingr.id === prodToManage.id) {
                 if (ingr.quantity <= prodToManage.inState.ready) {
                   ingredientsReady.push(ingr)
+                } else {
+                  draft.chosenGroup[0].products[
+                    mealIndex
+                  ].readyToPrepare = false
                 }
               }
             })
@@ -138,33 +166,34 @@ const newOrderState = (state = initialState, action) => {
             ingredientsReady.length
           ) {
             draft.chosenGroup[0].products[mealIndex].readyToPrepare = true
-          } else {
-            draft.chosenGroup[0].products[mealIndex].readyToPrepare = false
           }
+          // else {
+          //   draft.chosenGroup[0].products[mealIndex].readyToPrepare = false
+          // }
           ingredientsReady = []
         })
       })
     }
     case 'CHOOSE_PRODUCT': {
       return produce(state, (draft) => {
-        const chosenProduct = draft.chosenGroup[0].products.filter(
+        const chosenProduct = state.chosenGroup[0].products.filter(
           (product) => product.index === action.index
         )[0]
         draft.chosenProduct = chosenProduct
         draft.totalPrice += chosenProduct.price
         if (draft.newOrderSummary.length > 0) {
-          let productIndex = null
+          let chosenProductIndex = null
           draft.newOrderSummary.forEach((order, ind) => {
             if (order.index === draft.chosenProduct.index) {
-              return (productIndex = ind)
+              return (chosenProductIndex = ind)
             }
           })
-          if (productIndex !== null) {
-            draft.newOrderSummary[productIndex].quantity += 1
-            productIndex = null
+          if (chosenProductIndex !== null) {
+            draft.newOrderSummary[chosenProductIndex].quantity += 1
+            chosenProductIndex = null
           } else {
             draft.newOrderSummary.push(chosenProduct)
-            productIndex = null
+            chosenProductIndex = null
           }
         } else {
           draft.newOrderSummary.push(chosenProduct)
@@ -173,33 +202,11 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'DELETE_ORDER_SUMMARY_ITEM': {
       return produce(state, (draft) => {
-        let minusTotalPrice
-        const productsToManage = action.productsToManage
-        state.newOrderSummary.forEach((item) => {
-          item.ingredients.forEach((ingr) =>
-            productsToManage.forEach((product, index) => {
-              if (item.index === action.index && ingr.id === product.id) {
-                productsToManage[index].inState.locked -=
-                  item.quantity * ingr.quantity
-                productsToManage[index].inState.ready +=
-                  item.quantity * ingr.quantity
-                minusTotalPrice = item.quantity * item.price
-                state.chosenGroup[0].products.forEach((meal, mealIndex) => {
-                  if (meal.index === action.index) {
-                    draft.chosenGroup[0].products[
-                      Number(mealIndex)
-                    ].readyToPrepare = true
-                  }
-                })
-              }
-            })
-          )
-        })
         const newOrderSummary = draft.newOrderSummary.filter(
           (item) => item.index !== action.index
         )
         draft.newOrderSummary = newOrderSummary
-        draft.totalPrice -= minusTotalPrice
+        draft.totalPrice -= action.price * action.quantity
       })
     }
     case 'POST_NEW_ORDER': {
@@ -216,7 +223,7 @@ const newOrderState = (state = initialState, action) => {
             return `0${orders.length + closedOrders.length + 1}`
           }
         }
-        const orderItems = []
+        let orderItems = []
         newOrderSummary.map(({ index, itemName, quantity, size, unit }) => {
           let itemTemplate = {
             index: `${index}`,
@@ -238,10 +245,11 @@ const newOrderState = (state = initialState, action) => {
           profiles: profiles,
           guid: faker.datatype.uuid(),
           startDate: new Date(Date.now()),
-          endDate: 0
+          endDate: 0,
         }
 
-        let newOrder = draft.orders
+        let newOrder = []
+
         if (newOrderSummary.length > 0) {
           newOrder.push(orderTemplate)
           draft.orders = newOrder
@@ -256,14 +264,13 @@ const newOrderState = (state = initialState, action) => {
         let ingredientsWithInsufficientQuantity = []
         const productsToManage = action.productsToManage
         const ingredients = action.ingredients
-        const mealId = action.mealId
 
         ingredients.forEach((ingr) =>
           productsToManage.forEach((product, index) => {
             if (ingr.id === product.id) {
               if (product.inState.ready >= ingr.quantity) {
-                // productsToManage[index].inState.locked =+ ingr.quantity;
-                // productsToManage[index].inState.ready -= ingr.quantity;
+                // (productsToManage[index].inState.locked = +ingr.quantity).toFixed(2)
+                // (productsToManage[index].inState.ready -= ingr.quantity).toFixed(2)
               } else {
                 let missingQuantity = ingr.quantity - product.inState.ready
                 let newIngr = {
@@ -271,9 +278,6 @@ const newOrderState = (state = initialState, action) => {
                   missingQuantity: missingQuantity,
                 }
                 ingredientsWithInsufficientQuantity.push(newIngr)
-                draft.chosenGroup[0].products[
-                  Number(mealId)
-                ].readyToPrepare = false
               }
             }
           })
@@ -283,162 +287,6 @@ const newOrderState = (state = initialState, action) => {
           ingredientsWithInsufficientQuantity
       })
     }
-    case 'RESERVE_PRODUCTS': {
-      return produce(state, (draft) => {
-        let lastOrder = state.orders[state.orders.length - 1]
-        let newOrderSummary = state.newOrderSummary
-        let ingredientsToReserve = []
-
-        if (newOrderSummary.length > 0) {
-          state.groups.forEach((group) =>
-            group.products.forEach((product) =>
-              lastOrder.orderItems.forEach((item) => {
-                // if (product.inState.ready >= item.quantity) {
-                //   product.inState.locked =+ item.quantity;
-                //   product.inState.ready -= item.quantity;
-                // }
-                if (product.index === item.index) {
-                  if (item.quantity > 1) {
-                    let newProductIngredientsQuantity = product.ingredients.map(
-                      (ingr) => {
-                        let itemQuantity = Number(item.quantity)
-                        let newIngrQuantity = ingr.quantity * itemQuantity
-                        return (ingr = {
-                          ...ingr,
-                          quantity: newIngrQuantity,
-                        })
-                      }
-                    )
-                    ingredientsToReserve.push(newProductIngredientsQuantity)
-                  } else {
-                    ingredientsToReserve.push(product.ingredients)
-                  }
-                }
-              })
-            )
-          )
-          draft.ingredientsToReserve = [...ingredientsToReserve]
-        }
-      })
-    }
-    // case 'ITEM_READY': {
-    //   return produce(state, (draft) => {
-    //     const data = original(draft.orders)
-    //     const orderIndex = data.findIndex(
-    //       (order) => order.number === action.orderNumber
-    //     )
-    //     const itemIndex = data[orderIndex].orderItems.findIndex(
-    //       (item) => item.index === action.index
-    //     )
-    //     draft.orders[orderIndex].orderItems[itemIndex].complete =
-    //       !draft.orders[orderIndex].orderItems[itemIndex].complete
-    //   })
-    // }
-    // case 'ALL_ITEMS_READY': {
-    //   return produce(state, (draft) => {
-    //     const data = original(draft.orders)
-    //     const orderIndex = data.findIndex(
-    //       (order) => order.number === action.orderNumber
-    //     )
-    //     const itemsCounter = data[orderIndex].orderItems.length
-    //     let itemsCompletedCounter = 0
-    //     data[orderIndex].orderItems.map((item) => {
-    //       if (item.complete) {
-    //         itemsCompletedCounter += 1
-    //       }
-    //       return itemsCompletedCounter
-    //     })
-    //     if (itemsCounter === itemsCompletedCounter) {
-    //       draft.orders[orderIndex].complete = true
-    //     } else {
-    //       draft.orders[orderIndex].complete = false
-    //     }
-    //   })
-    // }
-    // case 'ORDER_STATUS': {
-    //   return produce(state, (draft) => {
-    //     const data = original(draft.orders)
-    //     const orderIndex = data.findIndex(
-    //       (order) => order.number === action.orderNumber
-    //     )
-    //     const itemsCounter = data[orderIndex].orderItems.length
-    //     let itemsCompletedCounter = 0
-    //     data[orderIndex].orderItems.map((item) => {
-    //       if (item.complete) {
-    //         itemsCompletedCounter += 1
-    //       }
-    //       return itemsCompletedCounter
-    //     })
-    //     if (itemsCompletedCounter === 0) {
-    //       draft.orders[orderIndex].status = 'notReady'
-    //       draft.orders[orderIndex].profiles[0].active = false
-    //       draft.orders[orderIndex].profiles[1].active = false
-    //     }
-    //     if (itemsCompletedCounter > 0 && itemsCompletedCounter < itemsCounter) {
-    //       draft.orders[orderIndex].status = 'almostReady'
-    //     }
-    //     if (itemsCompletedCounter === itemsCounter) {
-    //       draft.orders[orderIndex].status = 'ready'
-    //     }
-    //   })
-    // }
-    // case 'PROFILE_SELECTED': {
-    //   return produce(state, (draft) => {
-    //     const data = original(draft.orders)
-    //     const orderIndex = data.findIndex(
-    //       (order) => order.number === action.orderNumber
-    //     )
-    //     state.profiles.forEach(({ profileName, isActive }, profileIndex) => {
-    //       if (profileName === action.profile.profileName) {
-    //         draft.orders[orderIndex].profiles[profileIndex].isActive =
-    //           !draft.orders[orderIndex].profiles[profileIndex].isActive
-    //         if (data[orderIndex].status === 'notReady') {
-    //           draft.orders[orderIndex].status = 'almostReady'
-    //         }
-    //       } else {
-    //         draft.orders[orderIndex].profiles[profileIndex].isActive = false
-    //       }
-    //     })
-    //     // const checkIfAnyProfileIsActive =
-    //     if (
-    //       !draft.orders[orderIndex].profiles.some(
-    //         (profile) => profile.isActive
-    //       ) &&
-    //       !draft.orders[orderIndex].orderItems.some((item) => item.complete)
-    //     ) {
-    //       draft.orders[orderIndex].status = 'notReady'
-    //     }
-    //     // if (profileName[1] === action.profile.name) {
-    //     //   draft.orders[orderIndex].profiles[1].isActive =
-    //     //     !draft.orders[orderIndex].profiles[1].isActive;
-    //     //   draft.orders[orderIndex].profiles[0].isActive = false;
-    //     //   if (data[orderIndex].status === "notReady") {
-    //     //     draft.orders[orderIndex].status = "almostReady";
-    //     //   }
-    //     // }
-    //     // if (!profileActive) {
-    //     //   draft.orders[orderIndex].status = "notReady";
-    //     // }
-    //   })
-    // }
-    // case 'ORDER_READY_TO_GO': {
-    //   return produce(state, (draft) => {
-    //     const data = original(draft.orders)
-    //     const orderIndex = data.findIndex(
-    //       (order) => order.number === action.orderNumber
-    //     )
-    //     draft.orders[orderIndex].status = 'readyToGo'
-    //   })
-    // }
-    // case 'ORDER_DELIVERED': {
-    //   return produce(state, (draft) => {
-    //     const data = original(draft.orders)
-    //     const orderIndex = data.findIndex(
-    //       (order) => order.number === action.orderNumber
-    //     )
-    //     draft.orders[orderIndex].status = 'Delivered'
-    //   })
-    // }
     case 'PRODUCTS_TO_MANAGE': {
       return produce(state, (draft) => {
         const productsToManage = []
