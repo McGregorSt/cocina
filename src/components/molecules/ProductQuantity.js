@@ -33,7 +33,7 @@ const ProductQuantity = () => {
   return (
     <div>
       <StyledHeader>
-        <Heading>dodaj produkt</Heading>
+        <Heading>Add product</Heading>
         <EditButton
           icon={check}
           medium

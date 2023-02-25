@@ -53,6 +53,7 @@ const ProductActualTable = () => {
             )}:${timeFormat(secs)}`
             return (
               <TableItem
+                key={Math.random()}
                 index={index + 1}
                 productId={productId}
                 id={entry.id}

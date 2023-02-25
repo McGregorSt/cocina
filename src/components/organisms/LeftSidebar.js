@@ -69,13 +69,13 @@ const LeftSidebar = () => {
     <StyledSidebar active={showSidebar}>
       <StyledMenuList>
         <StyledMenuItem>
-          Profile
+          Profiles
           <div onChange={(e) => handleToggle(e)} defaultChecked={profiles}>
             <ToggleSwitch defaultChecked={profiles} onChange={(e) => handleToggle(e)} />
           </div>
         </StyledMenuItem>
       </StyledMenuList>
-      <StyledVersion>Wersja systemu Cocina: 1.2.8259.2</StyledVersion>
+      <StyledVersion>Cocina App version: 1.2.8259.2</StyledVersion>
     </StyledSidebar>
   )
 }

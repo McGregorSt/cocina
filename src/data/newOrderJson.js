@@ -6,7 +6,7 @@ export const newOrder = {
     {
       id: 1,
       index: "01",
-      name: "burgery",
+      name: "burgers",
       products: [
         {
           index: "0101",
@@ -41,7 +41,7 @@ export const newOrder = {
         },
         {
           index: "0102",
-          itemName: "burger vege",
+          itemName: "vege burger",
           price: 14.99,
           quantity: 1,
           size: 350,
@@ -72,7 +72,7 @@ export const newOrder = {
         },
         {
           index: "0103",
-          itemName: "burger konkret",
+          itemName: "meat burger",
           price: 16.99,
           quantity: 1,
           size: 500,
@@ -137,7 +137,7 @@ export const newOrder = {
     {
       id: 2,
       index: "02",
-      name: "zimne napoje",
+      name: "iced drinks",
       products: [
         {
           index: "0201",
@@ -330,7 +330,7 @@ export const newOrder = {
     {
       id: 3,
       index: "03",
-      name: "kawa / herbata",
+      name: "tea / coffee",
       products: [
         {
           index: "0301",

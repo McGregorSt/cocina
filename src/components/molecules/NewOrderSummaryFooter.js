@@ -1,8 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { checkIngrAvailability, checkMealAvailability, newOrder, postNewOrder } from '../../_actions/newOrderActions'
-import { lockIngredients } from '../../_actions/productActions'
+import { postNewOrder } from '../../_actions/newOrderActions'
 import EditButton from '../atoms/EditButton'
 
 const StyledFooter = styled.div`
@@ -43,18 +42,17 @@ const NewOrderSummaryFooter = () => {
   const dispatch = useDispatch()
 
   const handlePostNewOrder = (orderDetails) => {
-    console.log(orderDetails)
     dispatch(postNewOrder(orderDetails))
   }
 
   return (
     <StyledFooter>
       <StyledSummary>
-        Podsumowanie:
+        Total:
         <div>{totalPrice.toFixed(2)} PLN</div>
       </StyledSummary>
       <StyledEditButton onClick={() => handlePostNewOrder(orderDetails)}>
-        Zamawiam
+        Order
       </StyledEditButton>
     </StyledFooter>
   )

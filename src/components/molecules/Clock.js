@@ -86,7 +86,7 @@ const Clock = ({ toPrepare }) => {
   return (
     <StyledClock>
       <StyledHeader>
-        <Heading>czas przygotowania</Heading>
+        <Heading>preparation time</Heading>
         <EditButton
           icon={check}
           medium
@@ -119,7 +119,7 @@ const Clock = ({ toPrepare }) => {
       </StyledClockInputs>
       {toPrepare ? (
         <StyledHeader>
-          <Heading>domyślnie</Heading>
+          <Heading>default time</Heading>
           <StyledDefaultTime>
             {timeFormat(minutes)} : {timeFormat(seconds)}
           </StyledDefaultTime>

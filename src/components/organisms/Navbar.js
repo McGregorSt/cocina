@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import menu from '../../assets/menu-white.svg'
-import orders from '../../assets/orders.svg'
-import order from '../../assets/order.svg'
-import closedOrder from '../../assets/order_play.svg'
-import tv from '../../assets/tv.svg'
-import checklist from '../../assets/checklist.svg'
-import management from '../../assets/business-management.svg'
-import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { changeCurrentView, showLeftSidebar } from '../../_actions/mainActions'
-import NavItem from '../molecules/NavItem'
-import { checkMealAvailability } from '../../_actions/newOrderActions'
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import menu from "../../assets/menu-white.svg";
+import orders from "../../assets/orders.svg";
+import order from "../../assets/order.svg";
+import closedOrder from "../../assets/order_play.svg";
+import tv from "../../assets/tv.svg";
+import management from "../../assets/business-management.svg";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeCurrentView, showLeftSidebar } from "../../_actions/mainActions";
+import NavItem from "../molecules/NavItem";
 
 const StyledWrapper = styled.div`
   height: 6vh;
@@ -24,20 +22,16 @@ const StyledWrapper = styled.div`
   top: 0;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-`
+`;
 const StyledItems = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`
-const StyledNavItem = styled(NavItem)`
   height: 100%;
-  padding: 5px 20px;
-  font-size: 16px;
+  display: flex;
+`;
+const StyledNavItem = styled(NavItem)`
+  padding: 0px 20px;
   font-weight: 300;
   text-transform: uppercase;
-  border-bottom: 5px solid transparent;
+  display: flex;
   text-decoration: none;
   color: ${({ theme }) => theme.grey100};
   background-color: ${({ theme }) => theme.grey800};
@@ -45,7 +39,7 @@ const StyledNavItem = styled(NavItem)`
     filter: invert(88%) sepia(29%) saturate(16%) hue-rotate(86deg)
       brightness(108%) contrast(119%);
   }
-`
+`;
 
 const StyledToolbar = styled.div`
   width: 60px;
@@ -58,60 +52,56 @@ const StyledToolbar = styled.div`
   position: absolute;
   left: 10px;
   cursor: pointer;
-`
+`;
 
 const Navbar = () => {
-  const dispatch = useDispatch()
-  const slashUrl = window.location.pathname
+  const dispatch = useDispatch();
+  const slashUrl = window.location.pathname;
 
   useEffect(() => {
-    dispatch(changeCurrentView(slashUrl))
-  })
+    dispatch(changeCurrentView(slashUrl));
+  });
 
   return (
     <div>
       <StyledWrapper>
         <StyledToolbar onClick={() => dispatch(showLeftSidebar())} />
         <StyledItems>
-          <StyledNavItem as={NavLink} to='/new-order'>
+          <StyledNavItem as={NavLink} to="/new-order">
             <NavItem
-              itemName='new order'
+              itemName="new order"
               itemIcon={orders}
-              activeclass='active'
+              activeclass="active"
             />
           </StyledNavItem>
-          <StyledNavItem as={NavLink} to='/orders'>
-            <NavItem
-              itemName='orders'
-              itemIcon={order}
-              activeclass='active'
-            />
+          <StyledNavItem as={NavLink} to="/orders">
+            <NavItem itemName="orders" itemIcon={order} activeclass="active" />
           </StyledNavItem>
-          <StyledNavItem as={NavLink} to='/product-supply'>
+          <StyledNavItem as={NavLink} to="/product-supply">
             <NavItem
-              itemName='product supply'
+              itemName="product supply"
               itemIcon={management}
-              activeclass='active'
+              activeclass="active"
             />
           </StyledNavItem>
-          <StyledNavItem as={NavLink} to='/closed-orders'>
+          <StyledNavItem as={NavLink} to="/closed-orders">
             <NavItem
-              itemName='closed orders'
+              itemName="closed orders"
               itemIcon={closedOrder}
-              activeclass='active'
+              activeclass="active"
             />
           </StyledNavItem>
-          <StyledNavItem as={NavLink} to='/customer-view'>
+          <StyledNavItem as={NavLink} to="/customer-view">
             <NavItem
-              itemName='customer view'
+              itemName="customer view"
               itemIcon={tv}
-              activeclass='active'
+              activeclass="active"
             />
           </StyledNavItem>
         </StyledItems>
       </StyledWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

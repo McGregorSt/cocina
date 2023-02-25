@@ -6,7 +6,6 @@ const StyledStateItem = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0 30px;
   font-size: 26px;
   font-weight: 200;
 `

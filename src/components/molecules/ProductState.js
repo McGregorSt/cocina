@@ -8,7 +8,8 @@ import StateItem from './StateItem'
 const StyledProductState = styled.div`
   display: flex;
   justify-content: space-around;
-  padding: 0 20px;
+  padding: 0 10px;
+
 `
 
 const ProductState = ({ inState, toPrepare }) => {

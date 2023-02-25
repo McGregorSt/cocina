@@ -38,7 +38,7 @@ const OrderSummary = () => {
   return (
     <StyledOrderSummary active={true}>
       <div>
-        <p>Twoje zamówienie:</p>
+        <p>Your order:</p>
         {newOrderSummary.map(
           ({ index, itemName, price, size, unit, quantity, ingredients }) => (
             <NewOrderSummaryItem

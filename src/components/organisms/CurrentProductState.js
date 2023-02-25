@@ -12,7 +12,7 @@ const StyledActualState = styled.div`
 const CurrentProductState = ({ inState, toPrepare }) => {
   return (
     <div>
-      <Heading>aktualny stan produktu:</Heading>
+      <Heading>current product state:</Heading>
       <StyledActualState>
         <ProductActual inState={inState} toPrepare={toPrepare} />
       </StyledActualState>

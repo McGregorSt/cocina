@@ -124,7 +124,7 @@ const OrderCard = ({
                   : dispatch(orderReadyToGo(orderNumber))
               }
             >
-              {status === 'readyToGo' ? 'wydane' : 'gotowe'}
+              {status === 'readyToGo' ? 'delivered' : 'ready'}
             </Button>
           )}
         </StyledContent>

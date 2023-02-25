@@ -295,7 +295,6 @@ const productState = (state = initialState, action) => {
           order.orderItems.forEach((item) => {
             mealGroups.forEach((group) => {
               group.products.forEach((meal) => {
-                // console.log(meal, item)
                 if (meal.index === item.index) {
                   meal.ingredients.map((ingr) => {
                     let modifiedQuantityIngredient = {

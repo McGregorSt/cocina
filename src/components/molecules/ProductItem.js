@@ -5,7 +5,6 @@ import {
   checkIngrAvailability,
   checkMealAvailability,
   chooseProduct,
-  reserveProducts,
 } from '../../_actions/newOrderActions'
 import styled from 'styled-components'
 import { lockIngredients } from '../../_actions/productActions'
@@ -25,17 +24,12 @@ const ProductItem = ({
 }) => {
   const dispatch = useDispatch()
   const insufficientIngredients = useSelector(state => state.newOrderState.ingredientsWithInsufficientQuantity)
-  // const insufficientIngredientsList =  
-
-
   
   insufficientIngredients.forEach(ingr => {
-    console.log(ingr)
     return ingr.name
   })
 
   const handleProductChoice = () => {
-    console.log(index, itemName, readyToPrepare)
 
     readyToPrepare
       ? dispatch(
