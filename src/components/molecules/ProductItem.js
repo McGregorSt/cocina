@@ -25,7 +25,11 @@ const ProductItem = ({
 }) => {
   const dispatch = useDispatch()
   const insufficientIngredients = useSelector(state => state.newOrderState.ingredientsWithInsufficientQuantity)
-  const insufficientIngredientsList = insufficientIngredients.forEach(ingr => {
+  // const insufficientIngredientsList =  
+
+
+  
+  insufficientIngredients.forEach(ingr => {
     console.log(ingr)
     return ingr.name
   })

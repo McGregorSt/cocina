@@ -511,6 +511,7 @@ export const newOrder = {
   totalPrice: 0,
   showOrderSummary: false,
   ingredientsToReserve: [],
+  ingredientsWithInsufficientQuantity: [],
   profiles: [
     {
       profileName: 'lion',
