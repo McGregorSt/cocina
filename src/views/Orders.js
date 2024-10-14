@@ -7,6 +7,7 @@ const Orders = () => {
   const activeOrders = useSelector((state) => state.newOrderState.orders)
   // let activeOrders = orders.filter((order) => order.status !== 'Delivered')
 
+  console.log('activeOrders', activeOrders)
   return (
     <UserPage>
       {activeOrders.map(

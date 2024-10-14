@@ -8,21 +8,15 @@ const newOrderState = (state = initialState, action) => {
   switch (action.type) {
     case 'ITEM_READY': {
       return produce(state, (draft) => {
-        const orderIndex = state.orders.findIndex(
-          (order) => order.number === action.orderNumber
-        )
-        const itemIndex = state.orders[orderIndex].orderItems.findIndex(
-          (item) => item.index === action.index
-        )
+        const orderIndex = state.orders.findIndex((order) => order.number === action.orderNumber)
+        const itemIndex = state.orders[orderIndex].orderItems.findIndex((item) => item.index === action.index)
         draft.orders[orderIndex].orderItems[itemIndex].complete =
           !draft.orders[orderIndex].orderItems[itemIndex].complete
       })
     }
     case 'ALL_ITEMS_READY': {
       return produce(state, (draft) => {
-        const orderIndex = state.orders.findIndex(
-          (order) => order.number === action.orderNumber
-        )
+        const orderIndex = state.orders.findIndex((order) => order.number === action.orderNumber)
         const itemsCounter = state.orders[orderIndex].orderItems.length
         let itemsCompletedCounter = 0
         state.orders[orderIndex].orderItems.map((item) => {
@@ -40,9 +34,7 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'ORDER_STATUS': {
       return produce(state, (draft) => {
-        const orderIndex = state.orders.findIndex(
-          (order) => order.number === action.orderNumber
-        )
+        const orderIndex = state.orders.findIndex((order) => order.number === action.orderNumber)
         const itemsCounter = state.orders[orderIndex].orderItems.length
         let itemsCompletedCounter = 0
         state.orders[orderIndex].orderItems.map((item) => {
@@ -66,26 +58,18 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'PROFILE_SELECTED': {
       return produce(state, (draft) => {
-        const orderIndex = state.orders.findIndex(
-          (order) => order.number === action.orderNumber
-        )
-        const profileName = state.orders[orderIndex].profiles.map(
-          (profile) => profile.profileName
-        )
-        const profileActive = state.orders[orderIndex].profiles.map(
-          (profile) => profile.isActive
-        )
+        const orderIndex = state.orders.findIndex((order) => order.number === action.orderNumber)
+        const profileName = state.orders[orderIndex].profiles.map((profile) => profile.profileName)
+        const profileActive = state.orders[orderIndex].profiles.map((profile) => profile.isActive)
         if (profileName[0] === action.profile.profileName) {
-          draft.orders[orderIndex].profiles[0].isActive =
-            !draft.orders[orderIndex].profiles[0].isActive
+          draft.orders[orderIndex].profiles[0].isActive = !draft.orders[orderIndex].profiles[0].isActive
           draft.orders[orderIndex].profiles[1].isActive = false
           if (state.orders[orderIndex].status === 'notReady') {
             draft.orders[orderIndex].status = 'almostReady'
           }
         }
         if (profileName[1] === action.profile.profileName) {
-          draft.orders[orderIndex].profiles[1].isActive =
-            !draft.orders[orderIndex].profiles[1].isActive
+          draft.orders[orderIndex].profiles[1].isActive = !draft.orders[orderIndex].profiles[1].isActive
           draft.orders[orderIndex].profiles[0].isActive = false
           if (state.orders[orderIndex].status === 'notReady') {
             draft.orders[orderIndex].status = 'almostReady'
@@ -98,9 +82,7 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'ORDER_READY_TO_GO': {
       return produce(state, (draft) => {
-        const orderIndex = state.orders.findIndex(
-          (order) => order.number === action.orderNumber
-        )
+        const orderIndex = state.orders.findIndex((order) => order.number === action.orderNumber)
         draft.orders[orderIndex].status = 'readyToGo'
         draft.orders[orderIndex].endDate = new Date(Date.now())
         draft.orders[orderIndex].complete = true
@@ -108,9 +90,7 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'ORDER_DELIVERED': {
       return produce(state, (draft) => {
-        const orderIndex = state.orders.findIndex(
-          (order) => order.number === action.orderNumber
-        )
+        const orderIndex = state.orders.findIndex((order) => order.number === action.orderNumber)
         const orderComplete = state.orders[orderIndex].complete
         draft.orders[orderIndex].status = 'delivered'
         if (orderComplete) {
@@ -124,9 +104,7 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'CHOOSE_GROUP': {
       return produce(state, (draft) => {
-        const chosenGroup = draft.groups.filter(
-          (group) => group.id === action.id
-        )
+        const chosenGroup = draft.groups.filter((group) => group.id === action.id)
         draft.chosenGroup = chosenGroup
       })
     }
@@ -154,17 +132,12 @@ const newOrderState = (state = initialState, action) => {
                 if (ingr.quantity <= prodToManage.inState.ready) {
                   ingredientsReady.push(ingr)
                 } else {
-                  draft.chosenGroup[0].products[
-                    mealIndex
-                  ].readyToPrepare = false
+                  draft.chosenGroup[0].products[mealIndex].readyToPrepare = false
                 }
               }
             })
           })
-          if (
-            chosenGroup[mealIndex].ingredients.length ===
-            ingredientsReady.length
-          ) {
+          if (chosenGroup[mealIndex].ingredients.length === ingredientsReady.length) {
             draft.chosenGroup[0].products[mealIndex].readyToPrepare = true
           }
           // else {
@@ -176,9 +149,7 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'CHOOSE_PRODUCT': {
       return produce(state, (draft) => {
-        const chosenProduct = state.chosenGroup[0].products.filter(
-          (product) => product.index === action.index
-        )[0]
+        const chosenProduct = state.chosenGroup[0].products.filter((product) => product.index === action.index)[0]
         draft.chosenProduct = chosenProduct
         draft.totalPrice += chosenProduct.price
         if (draft.newOrderSummary.length > 0) {
@@ -202,9 +173,7 @@ const newOrderState = (state = initialState, action) => {
     }
     case 'DELETE_ORDER_SUMMARY_ITEM': {
       return produce(state, (draft) => {
-        const newOrderSummary = draft.newOrderSummary.filter(
-          (item) => item.index !== action.index
-        )
+        const newOrderSummary = draft.newOrderSummary.filter((item) => item.index !== action.index)
         draft.newOrderSummary = newOrderSummary
         draft.totalPrice -= action.price * action.quantity
       })
@@ -215,6 +184,7 @@ const newOrderState = (state = initialState, action) => {
         const closedOrders = draft.closedOrders
         const newOrderSummary = draft.newOrderSummary
         const profiles = state.profiles
+        const stateOrders = state.orders
 
         const orderNumber = () => {
           if (orders.length < 10) {
@@ -234,7 +204,7 @@ const newOrderState = (state = initialState, action) => {
             unit: `${unit}`,
           }
 
-          return orderItems.push(itemTemplate)
+          orderItems.push(itemTemplate)
         })
 
         const orderTemplate = {
@@ -252,7 +222,7 @@ const newOrderState = (state = initialState, action) => {
 
         if (newOrderSummary.length > 0) {
           newOrder.push(orderTemplate)
-          draft.orders = newOrder
+          draft.orders = [...stateOrders, ...newOrder]
           draft.newOrderSummary = []
           draft.totalPrice = 0.0
           draft.chosenProduct = []
@@ -283,8 +253,7 @@ const newOrderState = (state = initialState, action) => {
           })
         )
         // });
-        draft.ingredientsWithInsufficientQuantity =
-          ingredientsWithInsufficientQuantity
+        draft.ingredientsWithInsufficientQuantity = ingredientsWithInsufficientQuantity
       })
     }
     case 'PRODUCTS_TO_MANAGE': {
@@ -292,22 +261,15 @@ const newOrderState = (state = initialState, action) => {
         const productsToManage = []
         state.groups.forEach((group) =>
           group.products.forEach((product) =>
-            product.ingredients.forEach((ingredient) =>
-              productsToManage.push(ingredient)
-            )
+            product.ingredients.forEach((ingredient) => productsToManage.push(ingredient))
           )
         )
-        const sortedproductsToManage = productsToManage.sort(
-          (a, b) => a.id - b.id
-        )
+        const sortedproductsToManage = productsToManage.sort((a, b) => a.id - b.id)
         let productsToManageRemovedDuplicates = []
         sortedproductsToManage.forEach((product, index) => {
           if (
             productsToManageRemovedDuplicates.length > 0 &&
-            product.id ===
-              productsToManageRemovedDuplicates[
-                productsToManageRemovedDuplicates.length - 1
-              ].id
+            product.id === productsToManageRemovedDuplicates[productsToManageRemovedDuplicates.length - 1].id
           ) {
           } else {
             productsToManageRemovedDuplicates.push(product)

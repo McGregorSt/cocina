@@ -1,13 +1,12 @@
 {
   "files": {
     "main.css": "/cocina/static/css/main.e6161af3.css",
-    "main.js": "/cocina/static/js/main.53a5bca2.js",
+    "main.js": "/cocina/static/js/main.020396f4.js",
     "static/media/dropdown.png": "/cocina/static/media/dropdown.d435c9afd0042ef26838.png",
     "static/media/lion.svg": "/cocina/static/media/lion.02a499d95b45ea7c93d83e59111d0967.svg",
     "static/media/chuck.svg": "/cocina/static/media/chuck.390a7e47a080083ce65aadf8eb1be717.svg",
     "static/media/business-management.svg": "/cocina/static/media/business-management.bb85fa9f24993c1623d31a45b158be6d.svg",
     "static/media/orders.svg": "/cocina/static/media/orders.2fe5fc1abf47002aa50fd8bd3c0a81ce.svg",
-    "static/media/checklist.svg": "/cocina/static/media/checklist.6d71ca308898a6405ad1af459f9a96af.svg",
     "index.html": "/cocina/index.html",
     "static/media/order.svg": "/cocina/static/media/order.ef0655a982a2902c73dec6680a21a633.svg",
     "static/media/order_play.svg": "/cocina/static/media/order_play.74ac29403f8e1598b94b8a36e15916af.svg",
@@ -24,10 +23,10 @@
     "static/media/remove.svg": "/cocina/static/media/remove.ff4989146d05e60468b5cff69cb7fd09.svg",
     "static/media/menu-white.svg": "/cocina/static/media/menu-white.71abf06623d275caa262f8581f3dd220.svg",
     "main.e6161af3.css.map": "/cocina/static/css/main.e6161af3.css.map",
-    "main.53a5bca2.js.map": "/cocina/static/js/main.53a5bca2.js.map"
+    "main.020396f4.js.map": "/cocina/static/js/main.020396f4.js.map"
   },
   "entrypoints": [
     "static/css/main.e6161af3.css",
-    "static/js/main.53a5bca2.js"
+    "static/js/main.020396f4.js"
   ]
 }
