@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cocina/static/css/main.e6161af3.css",
-    "main.js": "/cocina/static/js/main.281d54b4.js",
+    "main.js": "/cocina/static/js/main.bf482f7d.js",
     "static/media/dropdown.png": "/cocina/static/media/dropdown.d435c9afd0042ef26838.png",
     "static/media/lion.svg": "/cocina/static/media/lion.02a499d95b45ea7c93d83e59111d0967.svg",
     "static/media/chuck.svg": "/cocina/static/media/chuck.390a7e47a080083ce65aadf8eb1be717.svg",
@@ -23,10 +23,10 @@
     "static/media/remove.svg": "/cocina/static/media/remove.ff4989146d05e60468b5cff69cb7fd09.svg",
     "static/media/menu-white.svg": "/cocina/static/media/menu-white.71abf06623d275caa262f8581f3dd220.svg",
     "main.e6161af3.css.map": "/cocina/static/css/main.e6161af3.css.map",
-    "main.281d54b4.js.map": "/cocina/static/js/main.281d54b4.js.map"
+    "main.bf482f7d.js.map": "/cocina/static/js/main.bf482f7d.js.map"
   },
   "entrypoints": [
     "static/css/main.e6161af3.css",
-    "static/js/main.281d54b4.js"
+    "static/js/main.bf482f7d.js"
   ]
 }
